@@ -1,10 +1,10 @@
 # Effective-Lecture-Scheduling-and-Reporting-System
-M i n i  P r o j e c t
+M i n i - P r o j e c t
 
 ------
 ### Install following packages before run this code.
 
-* node modules
+* Node modules
 ```markdown
 npm install
 ```
@@ -14,7 +14,7 @@ npm install
  npm install --save @fortawesome/react-fontawesome
  npm install --save @fortawesome/free-brands-svg-icons
 ```
-* bootstrap
+* Bootstrap
 ```markdown
  npm install react-bootstrap bootstrap@5.1.3
 ```
