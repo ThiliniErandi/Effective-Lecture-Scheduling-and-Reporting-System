@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Welcome from './Welcome';
+import Welcome from '../src/pages/Welcome';
 
 function App() {
   return (
