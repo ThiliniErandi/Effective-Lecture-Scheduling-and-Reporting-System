@@ -2,7 +2,7 @@
 M i n i - P r o j e c t
 
 ------
-### Install following packages before run this code.
+### Install following packages before run this project.
 
 * Node modules
 ```markdown
