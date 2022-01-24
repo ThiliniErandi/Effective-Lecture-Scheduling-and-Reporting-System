@@ -3,6 +3,13 @@ Mini Project
 
 Install following packages before run this code.
 
+Steps for adding your name below
+
+    1. node modules
+            npm install
+    2. Add your Name also link your github profile
+    3. Make pull request
+
   node modules=>
       npm install
 
