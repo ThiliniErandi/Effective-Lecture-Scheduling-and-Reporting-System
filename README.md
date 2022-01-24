@@ -1,5 +1,5 @@
 # Effective-Lecture-Scheduling-and-Reporting-System
-M i n i - P r o j e c t
+This is mini project for my university 
 
 ------
 ### Install following packages before run this project.
