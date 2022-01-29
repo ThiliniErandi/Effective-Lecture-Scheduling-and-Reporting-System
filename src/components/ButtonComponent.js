@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from 'react-bootstrap/Button';
 
 export default function ButtonComponent(props) {
@@ -7,12 +6,12 @@ export default function ButtonComponent(props) {
                 variant={props.variant} 
                 style=
                     {{
-                    fontFamily: 'Montserrat',
-                    marginRight: '60px',
-                    width: '150px',
-                    height: '50px',
-                    letterSpacing: '1px',
-                    fontSize: '20px',
+                      width: '300px',
+                      height: '35px',
+                      letterSpacing: '2px',
+                      fontSize: '15px',
+                      paddingBottom: '5px',
+                      borderRadius: '0px'
                     }}
             >{props.name}</Button>
         </div>;

@@ -1,5 +1,5 @@
 import SocialMediaIcons from '../components/SocialMediaIcons';
-import ButtonComponent from '../components/ButtonComponent';
+import LoginComponent from '../components/welcome/LoginComponent';
 
 const Welcome = () => {
     return (
@@ -21,10 +21,7 @@ const Welcome = () => {
                     <h3>Sabaragamuwa University of Sri Lanka</h3>
                 </div>
             </div>
-            <div className="hero-btn-set">
-                <ButtonComponent name='Login' variant='primary' />
-                <ButtonComponent name='Sign Up' variant='outline-light' />
-            </div>
+            <LoginComponent/>
         </div>
       </div> 
     );
