@@ -26,7 +26,3 @@ npm install
 ```markdown
  npm install yup --save
 ```
-* yup
-```markdown
- npm install yup --save
-```
