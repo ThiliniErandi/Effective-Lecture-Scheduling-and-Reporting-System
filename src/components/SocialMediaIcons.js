@@ -14,17 +14,20 @@ export default function SocialMediaIcons() {
                         position: 'absolute',
                         float: 'right' }
             }>
-            <FontAwesomeIcon 
+           <FontAwesomeIcon 
+                href=""
                 className='social-icon'
-                style={{ padding: '10px' }}
+                style={{ padding: '10px', cursor:'pointer'}}
                 icon={ faTwitterSquare } />
             <FontAwesomeIcon 
+                href=""
                 className='social-icon'
-                style={{ padding: '10px' }}
+                style={{ padding: '10px', cursor:'pointer' }}
                 icon={ faFacebookSquare } />
             <FontAwesomeIcon 
+                href=""
                 className='social-icon'
-                style={{ padding: '10px' }}
+                style={{ padding: '10px', cursor:'pointer' }}
                 icon={ faLinkedin } />
         </div>;
 }

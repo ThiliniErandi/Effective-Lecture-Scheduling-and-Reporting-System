@@ -1,17 +1,15 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Welcome from '../src/pages/Welcome';
+import Welcome from './pages/Welcome';
+import ForgotPassword from './components/welcome/ForgotPassword'
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Welcome />
-        <div className="content">
           <Switch>
-            <Route exact path="/">
-            </Route>
+            <Route path="/ForgotPassword"><ForgotPassword/></Route>
+            <Route exact path="/"><Welcome/></Route>
           </Switch>
-        </div>
       </div>
     </Router>
   );
