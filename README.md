@@ -18,3 +18,15 @@ npm install
 ```markdown
  npm install react-bootstrap bootstrap@5.1.3
 ```
+* Formik
+```markdown
+ npm install formik --save
+```
+* yup
+```markdown
+ npm install yup --save
+```
+* yup
+```markdown
+ npm install yup --save
+```
