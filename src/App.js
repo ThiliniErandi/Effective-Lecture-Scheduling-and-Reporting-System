@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Welcome from './pages/Welcome';
+import Home from './pages/Home';
 import ForgotPassword from './components/welcome/ForgotPassword'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <div className="App">
           <Switch>
             <Route path="/ForgotPassword"><ForgotPassword/></Route>
+            <Route path="/home"><Home/></Route>
             <Route exact path="/"><Welcome/></Route>
           </Switch>
       </div>

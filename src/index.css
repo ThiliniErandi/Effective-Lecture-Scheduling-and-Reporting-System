@@ -55,8 +55,8 @@ h6 {
 .hero-right-img{
   padding-top: 0px;
   padding-right: 0px;
-  width: 500px;
-  height: 657px;
+  width: 560px;
+  height: 753px;
   float: right;  
 }
 
@@ -83,8 +83,8 @@ h6 {
 }
 
 .hero-welcome h2{
-  letter-spacing: 10px;
-  font-size: 40px;
+  letter-spacing: 20px;
+  font-size: 50px;
   font-weight: 400;
   font-family: Poppins;
 }
@@ -98,4 +98,28 @@ h6 {
   padding-top: 390px;
   padding-left: 9%;
   display: flex;
+}
+
+/* Home Page */
+.home-welcome{
+  padding-top: 320px;
+  color: rgb(8, 8, 8) ;
+  padding-left: 8%;
+}
+
+.home-welcome h2{
+  letter-spacing: 20px;
+  font-size: 50px;
+  font-weight: 400;
+  font-family: Poppins;
+}
+
+.home-welcome h3{
+  font-weight: 100;
+  font-family: Nunito-regular;
+}
+
+.depRow {
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
