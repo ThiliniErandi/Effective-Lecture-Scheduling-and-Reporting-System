@@ -26,3 +26,7 @@ npm install
 ```markdown
  npm install yup --save
 ```
+* toastify and mdb
+```markdown
+ npm i react-toastify mdb-react-ui-kit
+```

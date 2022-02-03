@@ -1,85 +1,27 @@
 /* login form */
-.form {
-    padding-Top: 500px;
-    padding-Left: 200px;
-    display: block;
-    position: relative;
-}
-
-.input-box{
-  position: relative;
-}
-
-.formInput {
-  display: inline;
-  height: 45px;
-  width: 365px;
-  margin-bottom: 8px;
-  border: none;
-  padding: 15px 0px 0px 8px;
-  font-size: 17px;
-  color: black;
-  line-height: 1;
-  outline: none;
-  box-shadow: none;
-}
-
-.formLabel {
-  position: absolute;
-  top: 4px;
-  left: 0px;
-  padding: 15px 0px 0px 8px;
-  font-size: 16px;
-  color: rgb(75, 72, 72);
-  pointer-events: none;
-  
-
-}
-
-.formInput:valid + .formLabel {
-  transform: translateY(-20px);
-  transition: .5s ease-in-out;
-}
-
-.formInput:focus + .formLabel{
-  top: -15px;
-  left: 0px;
-  color: #021153;
-  font-weight: 500;
-  font-size: 12px;
-  transform: translateY(0%);
-}
 
 .input.error {
   border-color: red !important;
-  /* color: rgb(13, 59, 199); */
 }
 
 .input-feedback {
   color: rgb(243, 13, 13) ;
-  margin-top: -11px;
+  margin-top: -10px;
+  margin-left: 5px;
   font-size: 14px;
   margin-bottom: 5px;
   font-weight: 450;
 }
 
 .formBtn {
-  padding: 5px 151px;
   letter-spacing: 2px;
   color: white;
   font: Poppins;
-  background-color: rgb(13, 59, 199);
-}
-
-.formBtn:hover {
-  cursor: pointer;
-  color: rgb(216, 231, 2);
-  font-weight: 500;
 }
 
 .row{
-  margin-bottom: -10px;
-  margin-top: 12px;
+  margin-bottom: -5px;
+  padding-top: 15px;
   width: 370px;
   font-size: 14px;
 }
@@ -99,53 +41,17 @@
 
 .forgotPwd-form{
   padding-Top: 50px;
-  padding-Left: 200px;
+  padding-Left: 250px;
   display: block;
-}
-
-.forgotPwd-inputBox{
-  position: relative;
-}
-
-.forgotPwd-input{
-  display: inline-block;
-  height: 45px;
-  width: 50%;
-  margin-left: 100px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  padding: 15px 0px 0px 8px;
-  font-size: 15px;
-  color: black;
-  line-height: 1;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.forgotPwd-Label{
-  position: absolute;
-  top: 4px;
-  left: 100px;
-  padding: 15px 0px 0px 8px;
-  font-size: 15px;
-  color: black;
-  pointer-events: none;
-  transition: .5s;
-}
-
-.forgotPwd-inputBox .forgotPwd-input:focus ~ .forgotPwd-Label {
-  top: -15px;
-  left: 100px;
-  color: #051f92;
-  font-weight: 500;
-  font-size: 12px;
+  width:800px;
+  margin-left:150px ;
 }
 
 .forgotPwd-feedback{
   color: rgb(243, 13, 13) ;
-  margin-top: -11px;
+  margin-top: -20px;
   font-size: 14px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   font-weight: 450;
-  margin-left: 102px;
+  margin-left: 10px;
 }
