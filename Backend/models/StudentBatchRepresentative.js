@@ -13,15 +13,15 @@ const stu_Batch_RepSchema = new Schema ({
         required : true
     },
     batch : {
-        type : String,
+        type : Object["1", "2", "3", "4"],
         required : true
     },
     department : {
-        type : String,
+        type : Object["CIS", "FST", "NR", "PST", "SM"],
         required : true
     },
     email : {
-        type : String,
+        type : Email,
         required : true
     },
 })

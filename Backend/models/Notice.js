@@ -8,20 +8,10 @@ const noticeSchema = new Schema ({
         type : String,
         required : true
     },
-    // image file upload
     description : {
         type : String,
         required : true
     },
-    // user_type : {
-    //     type: [
-    //             "1",
-    //             "2",
-    //             "3",
-    //             "4",
-    //           ],
-    //     required : true,
-    // },
 
 })
 

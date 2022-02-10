@@ -13,11 +13,11 @@ const lecturerSchema = new Schema ({
         required : true
     },
     courses : {
-        type : String,
+        type : Object,
         required : true
     },
     email : {
-        type : String,
+        type : Email,
         required : true
     },
     designation : {
