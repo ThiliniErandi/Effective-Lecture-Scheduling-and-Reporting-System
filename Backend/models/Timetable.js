@@ -16,6 +16,18 @@ const timetableSchema = new Schema ({
         type : String,
         required : true
     },
+    user_id : {
+        type : String,
+        required : true
+    },
+    batch : {
+        type : Object["1", "2", "3", "4"],
+        required : true
+    },
+    department: {
+        type : Object["CIS", "FST", "NR", "PST", "SM"],
+        required : true
+    }
 })
 
 const Timetable = mongoose.model("Timetable", timetableSchema);

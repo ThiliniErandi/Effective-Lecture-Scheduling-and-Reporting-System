@@ -9,7 +9,7 @@ const batchSchema = new Schema ({
         required : true
     },
     year : {
-        type : String,
+        type : Object["1", "2", "3", "4"],
         required : true
     },
     department : {
@@ -20,7 +20,7 @@ const batchSchema = new Schema ({
         type : String,
         required : true
     },
-    stu_representative : {
+    rep_id : {
         type : String,
         required : true
     },

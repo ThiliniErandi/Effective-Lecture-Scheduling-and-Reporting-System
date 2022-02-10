@@ -1,0 +1,87 @@
+const router = require('express').Router();
+let Timetable = require('../models/Timetable');
+
+//create timetable
+router.route("/add").post((req, res) => {
+    const timetable_id = req.body.timetable_id;
+    const name = req.body.name;
+    const type = req.body.type;
+    const user_id = req.body.user_id;
+    const batch = req.body.batch;
+    const department = req.body.department;
+  
+    const newTimetable = new Timetable({
+        timetable_id,
+        name,
+        type,
+        user_id,
+        batch,
+        department
+    })
+
+    //passing data to the db
+    newTimetable.save().then(()=>{
+        res.json("Timetable Added")
+    }).catch(()=>{
+        console.log(err);
+    })
+})
+
+//view timetables
+router.route("/view").get((req, res)=>{
+    Timetable.find().then(( timetables)=>{
+        res.json(timetables)
+    }).catch((err)=>{
+        console.log(err)
+    })
+})
+
+//update  timetables
+router.route("/update/:timetableId").put(async(req, res)=>{
+    let timetable_id = req.params. timetableId;
+    const { timetable_id, name, type, user_id, batch, department } = req.body;
+
+    const updateTimetable = {
+        timetable_id, 
+        name, 
+        type,
+        user_id,
+        batch,
+        department
+    }
+
+    const update = await Timetable.findByIdAndUpdate( timetable_id, updateTimetable )
+    .then(() => {
+        res.status(200).send({status: "Timetable updated"})
+    }).catch((err)=> {
+        console.log(err);
+        res.status(500).send({status: "Error with updating data", error:err.message});
+    }) 
+})
+
+//delete timetables
+router.route("/delete/:timetableId").delete(async(req,res) => {
+    let timetable_id = req.params.timetableId;
+    await Timetable.findByIdAndDelete(timetable_id)
+    .then(()=> {
+        res.status(200).send({status: "Timetable deleted"});   
+    }).catch((err)=> {
+        console.log(err.message);
+        res.status(500).send({status: "Error with delete timetable", error: err.message});
+    })
+})
+
+//a timetable details view
+router.route("/get/:timetableId").get(async(req, res)=> {
+    let timetable_id = req.params.timetableId;
+
+    const timetable = await Timetable.findById(timetable_id)
+    .then((timetable) => {
+        res.status(200).send({status: "Timetable fetched", timetable });
+    }).catch(()=> {
+        console.log(err.message);
+        res.status(500).send({status: "Error with get timetable", error: err.message });
+    })
+})
+
+module.exports = router;
