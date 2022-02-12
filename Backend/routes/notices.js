@@ -5,11 +5,12 @@ let Notice = require('../models/Notice');
 router.route("/add").post((req, res) => {
     const title = req.body.title;
     const description = req.body.description;
-    //if we include a number data type => const age = Number(req.body.age)
-     
+    // const titleImg = req.body.titleImg;
+
     const newNotice = new Notice({
         title,
-        description
+        description,
+        // titleImg
     })
     //passing data to the db
     //this is a promise(it is as if...else)| exception handlig
@@ -30,16 +31,14 @@ router.route("/view").get((req, res)=>{
 })
 
 //update notices
-
-//can also use POST method
-//async function = do the new req as well previous re at a same time | hope a promise about about task complete to do next task
 router.route("/update/:noticeId").put(async(req, res)=>{
     let notice_id = req.params.noticeId;
     const { title, description } = req.body; //destructure
 
     const updateNotice = {
         title,
-        description
+        description,
+        // titleImg
     }
 
     //await - keep next task wait until came promise on previous success 
@@ -67,7 +66,6 @@ router.route("/delete/:noticeId").delete(async(req,res) => {
 //one notice details view
 router.route("/get/:noticeId").get(async(req, res)=> {
     let notice_id = req.params.noticeId;
-    // await Notice.findOne(title)
     const notice = await Notice.findById(notice_id)
     .then((notice) => {
         res.status(200).send({status: "Notice fetched", notice });
