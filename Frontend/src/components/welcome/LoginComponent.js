@@ -4,24 +4,34 @@ import { useFormik } from 'formik';
 import {  MDBInput, MDBBtn } from 'mdb-react-ui-kit';
 import * as Yup from 'yup';
 import './login.css';
+import axios from 'axios';
 
 const Login = () => {
 
   const formik = useFormik({
     initialValues: {
-      userName: '',
+      username: '',
       password: '',
-      rememberPassword: false,
+      // rememberPassword: false,
     },
     
     validationSchema: Yup.object({
-      userName: Yup.string('Invalid Username').required('Required'),
-      password: Yup.string('Does not match with the username').required('Required'),
+      username: Yup.string('Invalid Username').required(),
+      password: Yup.string('Does not match with the username').required(),
       // rememberPassword: Yup.boolean().test()
     }),
 
     onSubmit: values => {
       console.log(JSON.stringify(values, null, 2));
+
+      axios.get("http://localhost:8070/users/view", values)
+      .then((res)=> {
+          alert("Login successfully");
+          window.location = '/home';
+          // values({ username: "", password: ""})
+      }).catch((err)=>{
+          alert("Something went wrong")
+      })
     },
   
   });
@@ -32,17 +42,17 @@ const Login = () => {
 
       <MDBInput
         label='Username'
-        id="userName"
-        name="userName"
+        id="username"
+        name="username"
         type="text"
         style={{ marginBottom:'10px' }}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={formik.values.userName}
+        value={formik.values.username}
       />
     
-      {formik.touched.userName && formik.errors.userName ? (
-        <div className='input-feedback !mportant'>{formik.errors.userName}</div>
+      {formik.touched.username && formik.errors.username ? (
+        <div className='input-feedback !mportant'>{formik.errors.username}</div>
       ) : null}
     
       <MDBInput
@@ -63,7 +73,7 @@ const Login = () => {
 
       <div className="row">
         <div className="col from-check ">
-        <input
+        {/* <input
           className='remember'
           name="remember"
           type="checkbox"
@@ -72,7 +82,7 @@ const Login = () => {
           onBlur={formik.handleBlur}
           value={formik.values.rememberPassword}
           id="flexCheckChecked" 
-          />
+          /> */}
         <label className="form-check-label" htmlFor="flexCheckChecked">Remember me</label>
         </div>
         <div className="col">

@@ -2,13 +2,34 @@ const router = require('express').Router();
 let User = require('../models/User');
 
 //create users
-
+router.route("/add").post((req, res) => {
+        // const user_id = req.body.user_id;
+        const user_name = req.body.user_name;
+        const password = req.body.password;
+        const user_type = req.body.user_type;
+        const email = req.body.email;
+    
+        const newUser = new User({
+            // user_id, 
+            user_name, 
+            password, 
+            user_type, 
+            email
+        })
+        
+        //passing data to the db
+        newUser.save().then(()=>{
+            res.json("User Added")
+        }).catch(()=>{
+            console.log(err);
+        })
+    })
 
 //view users
 router.route("/view").get((req, res)=>{
     User.find().then((users)=>{
         res.json(users)
-    }).catch((err)=>{
+    }).catch(()=>{
         console.log(err)
     })
 })
@@ -16,11 +37,11 @@ router.route("/view").get((req, res)=>{
 //update users
 router.route("/update/:userId").put(async(req, res)=>{
     let user_id = req.params.userId;
-    const { user_id, name, password, user_type, email } = req.body;
+    const { user_name, password, user_type, email } = req.body;
 
     const updateUser = {
-        user_id, 
-        name, 
+        // user_id, 
+        user_name, 
         password, 
         user_type, 
         email

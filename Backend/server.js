@@ -27,13 +27,37 @@ connection.once("open", () => {
     console.log("Mongodb Connection Success!");
 })
 
-// const userRouter = require('./routes/users.js')
 
-// app.use("/users", userRouter);
+// const batchrouter = require('./routes/batches.js')
+// app.use("/batches", batchrouter);
+
+// const chatRouter = require('./routes/chats.js')
+// app.use("/chats", chatRouter);
+
+// const departmentRouter = require('./routes/departments.js')
+// app.use("/departments", departmentRouter);
+
+// const hodRouter = require('./routes/hods.js')
+// app.use("/hods", hodRouter);
+
+// const lecturerRouter = require('./routes/lecturers.js')
+// app.use("/lecturers", lecturerRouter);
 
 const noticeRouter = require('./routes/notices.js')
-
 app.use("/notices", noticeRouter);
+
+// const scheduleRouter = require('./routes/schedules.js')
+// app.use("/schedules", scheduleRouter);
+
+// const stu_batch_repRouter = require('./routes/studentBatchRepresentatives.js')
+// app.use("/stu_batch_reps", stu_batch_repRouter);
+
+// const timetableRouter = require('./routes/timetables.js')
+// app.use("/timetables", timetableRouter);
+
+const userRouter = require('./routes/users.js')
+app.use("/users", userRouter);
+
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on port number: ${PORT}`)
