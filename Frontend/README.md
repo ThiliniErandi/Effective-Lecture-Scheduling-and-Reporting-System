@@ -30,3 +30,15 @@ npm install
 ```markdown
  npm i react-toastify mdb-react-ui-kit
 ```
+* nodemon
+```markdown
+ npm i nodemon
+```
+* express, mongoose
+```markdown
+ npm i express mongoose
+```
+* axios
+```markdown
+ npm i axios
+```
