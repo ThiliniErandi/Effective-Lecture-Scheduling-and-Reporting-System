@@ -2,7 +2,7 @@
 This project is creating as my university mini project. 
 
 ------
-### Dependencies that I used
+### Packages and Dependencies that I used
 
 * Node modules
 ```markdown
