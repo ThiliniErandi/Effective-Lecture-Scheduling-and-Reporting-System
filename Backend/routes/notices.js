@@ -5,21 +5,41 @@ let Notice = require('../models/Notice');
 router.route("/add").post((req, res) => {
     const title = req.body.title;
     const description = req.body.description;
-    // const titleImg = req.body.titleImg;
+    const titleImg = req.files.titleImg;
 
     const newNotice = new Notice({
         title,
         description,
-        // titleImg
+        titleImg
     })
+
     //passing data to the db
-    //this is a promise(it is as if...else)| exception handlig
     newNotice.save().then(()=>{
         res.json("Notice Added")
     }).catch(()=>{
         console.log(err);
     })
 })
+
+// Upload Endpoint
+router.route("/upload").post((req, res) => { 
+    if (req.files === null) {
+        return res.status(400).json({ msg: 'No file uploaded' });
+    }
+
+    const titleImg = req.files.titleImg;
+
+    titleImg.mv(`${__dirname}/frontend/public/assets/images/uploads/${titleImg.name}`, err => {
+        if (err) {
+        console.error(err);
+        return res.status(500).send(err);
+        }
+
+        res.json({ fileName: titleImg.name, filePath: `/uploads/${titleImg.name}` });
+    });
+});
+
+
 
 //view notices
 router.route("/view").get((req, res)=>{

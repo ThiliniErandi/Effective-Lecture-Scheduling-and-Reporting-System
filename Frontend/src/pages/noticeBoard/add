@@ -1,13 +1,40 @@
-import React from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import Navbar from '../../components/Navbar';
-import { MDBBtn, MDBInput } from 'mdb-react-ui-kit';
-// import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { MDBBtn, MDBInput, MDBValidation } from 'mdb-react-ui-kit';
 import axios from 'axios'; 
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+//import { useFormik } from 'formik';
+// import * as Yup from 'yup';
+// import { Link } from 'react-router-dom';
+// import Navbar from '../../components/Navbar';
 
- const AddNotice = () => {
+const initialState = {
+    title: '',
+    description: '',
+    // checkbox: '',
+    // imageUrl: ''
+}
+
+// const stuBatches = [
+    //     { key:'1', value: 'First'},
+    //     { key:'2', value: 'Second'},
+    //     { key:'3', value: 'Third'},
+    //     { key:'4', value: 'Fourth'}
+    // ]
+
+ const AddEditNotice = () => {
+
+    const [ formValue, setFormValue ] = useState(initialState);
+    // const [ checkboxErrMsg, setcheckboxErrorMsg ] = useState(null);
+    const { title, description } = formValue;
+
+    const handleSubmit = () => {};
+    
+    // const {id} = useParams();
+    
+    // useEffect(() => {
+        
+    // })
 
 //   const getDate = () => {
 //       let today = new Date();
@@ -19,12 +46,7 @@ import axios from 'axios';
 //       return today; 
 //   };  
 
-    // const stuBatches = [
-    //     { key:'', value: ''},
-    //     { key:'', value: ''},
-    //     { key:'', value: ''},
-    //     { key:'', value: ''}
-    // ]
+    
 
   const formik = useFormik({
     initialValues: {
@@ -77,14 +99,49 @@ import axios from 'axios';
   });
 
   return (
-     <>
-      <Navbar/>
-        <div className='formContainer' style={{ marginLeft:'350px', padding: '20px', textAlign:'justify', width:'45vw' }}>
+     <MDBValidation className='row ' style={{ marginTop:"100px"}} noValidate onSubmit={handleSubmit}>
+        {/* <div className='formContainer' style={{ marginLeft:'350px', padding: '20px', textAlign:'justify', width:'45vw' }}> */}
             
-            <form onSubmit={formik.handleSubmit} >
+            {/* <form onSubmit={formik.handleSubmit} > */}
 
                 <h3 style={{ textAlign:'center', paddingBottom:'10px', fontFamily:'Poppins' }}>Add Notice</h3>
+                <div style={{ margin: 'auto', padding: "15px", maxWidth: "400px", alignContent: "center"}}>
+                    <MDBInput
+                        value={title}
+                        label='Title'
+                        id="title"
+                        name="title"
+                        type="text"
+                        style={{fontSize:'10px'}}
+                        onChange={onInputChange}
+                        required
+                        validation='Please provide a title'
+                        invalid
+                    />
+                    <br/>
+                    <MDBInput
+                        value={description}
+                        label='Description'
+                        id="description"
+                        name="description"
+                        type="text"
+                        textarea rows={6}
+                        style={{marginTop:'10px' }}
+                        onChange={onInputChange}
+                        required
+                        validation='Please provide a description'
+                        invalid
+                    />
+                    <MDBFile 
+                        id='titleImg' 
+                        name='titleImg'
+                        style={{ paddingRight:'0px' }} 
+                        onChange={formik.handleChange} 
+                        onBlur={formik.handleBlur}
+                        value={formik.values.titleImg}
+                    />
 
+                </div>
                 {/* <MDBInput
                     label='Notice_Id'
                     id="Notice_id"
@@ -178,4 +235,4 @@ import axios from 'axios';
   );
 };  
 
-export default AddNotice;
+export default AddEditNotice;

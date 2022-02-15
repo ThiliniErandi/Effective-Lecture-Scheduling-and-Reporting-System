@@ -1,3 +1,4 @@
+const fileUpload = require('express-fileupload');
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
@@ -12,10 +13,10 @@ const noticeSchema = new Schema ({
         type : String,
         required : true
     },
-    // titleImg : {
-    //     // type : File,
-    //     required : true
-    // }
+    titleImg : {
+        type : String,
+        required : true
+    } 
 
 })
 
