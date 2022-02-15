@@ -43,10 +43,11 @@ const AddEditNotice = () => {
             const response = await axios.post("http://localhost:8070/notices/add", updatedNoticeData );
             if(response.status === 201 ) {
                 toast.success("Notice added successfully");
-                setFormValue({ title: "", description: "" });
-                window.location = '/notices';
+                
             }else{
                 toast.error("Something went wrong");
+                setFormValue({ title: "", description: "" });
+                window.location = '/notices';
             }
         }
     };
@@ -176,7 +177,7 @@ const AddEditNotice = () => {
                 </MDBBtn>
                 <MDBBtn color='dark'
                     style={{ paddingInline: '40px', fontSize: '15PX', marginTop: '20px' }}
-                    onclick={() => window.location("/notices")}
+                    onclick={(e) => window.location("/notices")}
                     >Go Back
                 </MDBBtn>
             </div>
