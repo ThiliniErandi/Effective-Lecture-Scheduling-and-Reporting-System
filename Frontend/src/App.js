@@ -8,7 +8,9 @@ import AddEditNotice from './pages/noticeBoard/AddEditNotice';
 import ViewNotice from './pages/noticeBoard/ViewNotice';
 // import EditNotice from './pages/noticeBoard/EditNotice';
 import NotFound from './pages/NotFound';
-import Alerts from './components/alerts'
+// import Alerts from './components/alerts';
+import Users from './pages/Users'
+import User from './pages/User'
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,11 +21,13 @@ function App() {
         <ToastContainer/>
         <Switch >
         <Route path = "/ForgotPassword" > < ForgotPassword/> </Route> 
-        <Route path = "/alerts" > < Alerts/> </Route> 
+        {/* <Route path = "/alerts" > < Alerts/> </Route>  */}
         <Route path = "/notices" > < Notices/> </Route> 
         <Route path = "/noticeHome" > < NoticeHome/> </Route> 
         <Route path = "/addEditNotice" > < AddEditNotice/> </Route> 
         <Route path = "/viewNotice/:id" > < ViewNotice/> </Route> 
+        <Route path = "/users" > < Users/> </Route> 
+        <Route exact path = "/user" > < User/> </Route> 
         <Route path = "/home" > < Home/> </Route> 
         <Route exact path = "/" > < Welcome/> </Route> 
         <Route path = "*" > < NotFound/> </Route>

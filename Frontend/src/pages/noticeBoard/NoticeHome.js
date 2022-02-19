@@ -25,7 +25,7 @@ const NoticeHome = () => {
 
     const handleDelete = async(id) => {
         if (window.confirm("Are you sure that you wanted to delete this notice?")) {
-            const response = await axios.delete(`http://localhost:8070/notices/delete/$${id}`);
+            const response = await axios.delete(`http://localhost:8070/notices/delete/${id}`);
             if (response.status === 200) {
                 toast.success("Notice deleted successfully");
                 loadNoticesData();
@@ -43,35 +43,29 @@ const NoticeHome = () => {
         return str;
     };
 
-    return ( < >
-        <
-        Navbar / >
-        <
-        MDBRow > {
-            data.length === 0 && ( <
-                MDBTypography className = 'text-center mb-0'
+    return ( <>
+        <Navbar/>
+        <MDBRow> {
+            data.length === 0 && ( 
+                <MDBTypography className = 'text-center mb-0'
                 tag = 'h2' >
-                No Notice Found <
-                /MDBTypography>
-            )
-        } <
-        MDBCol >
-        <
-        MDBContainer >
-        <
-        MDBRow > {
-            data && data.map((item, index) => ( <
-                Notices key = { index } {...item }
+                No Notice Found 
+                </MDBTypography>
+        )} 
+        <MDBCol>
+        <MDBContainer>
+        <MDBRow> {
+            data && data.map((item, index) => ( 
+                <Notices key = { index } {...item }
                 excerpt = { excerpt }
-                handleDelete = { handleDelete }
-                />
+                handleDelete = { handleDelete }/>
             ))
-        } <
-        /MDBRow> < /
-        MDBContainer > <
-        /MDBCol> < /
-        MDBRow > <
-        />
+        } 
+        </MDBRow> 
+        </MDBContainer> 
+        </MDBCol> 
+        </MDBRow> 
+            </>
 
     );
 };

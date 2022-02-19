@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { MDBBtn, MDBInput, MDBValidation } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
