@@ -6,22 +6,22 @@ router.route("/add").post((req, res) => {
         // const user_id = req.body.user_id;
         const user_name = req.body.user_name;
         const password = req.body.password;
-        const user_type = req.body.user_type;
         const email = req.body.email;
+        const user_type = req.body.user_type;
     
         const newUser = new User({
             // user_id, 
             user_name, 
-            password, 
-            user_type, 
-            email
+            password,
+            email, 
+            user_type 
         })
         
         //passing data to the db
         newUser.save().then(()=>{
             res.json("User Added")
         }).catch(()=>{
-            console.log(err);
+            // console.log(err);
         })
     })
 

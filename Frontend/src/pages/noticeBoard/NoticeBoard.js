@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { MDBRow, MDBCol, MDBContainer, MDBTypography } from 'mdb-react-ui-kit';
-import Notices from './Notices';
+import Notices from '../../components/noticeBoard/Notice';
 import Navbar from '../../components/Navbar'
 
 const NoticeHome = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  return <div>
+  return <div style={{height:'10px'}}>
     <nav className="navbar navbar-expand-lg navbar-light bg-light" 
          style={{ paddingBottom:'0px', backgroundImage: 'linear-gradient(to right bottom, #0f0c29,#005AA7, #302b63)' }}>
       <div className="container-fluid justify-content-between">
@@ -115,7 +115,7 @@ const Navbar = () => {
               aria-expanded="false"
             >
               <img
-                src="assets/images/hero-right-img.png"
+                src="/assets/images/hero-right-img.png"
                 className="rounded-circle"
                 height="22"
                 alt="Portrait of a Woman"

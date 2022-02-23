@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-// import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { MDBBtn, MDBInput, MDBValidation } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -23,32 +23,44 @@ const AddEditNotice = () => {
 
     const [formValue, setFormValue] = useState(initialState);
     // const [ checkboxErrMsg, setcheckboxErrorMsg ] = useState(null);
+    const [editMode, setEditMode] = useState(false);
     const { title, description } = formValue;
 
-    const getDate = () => {
-        let today = new Date();
-        let dd = String(today.getDate()).padStart(2, "0");
-        let mm =  String(today.getMonth()).padStart(2, "0");
-        let yyyy = today.getFullYear();
+    // const getDate = () => {
+    //     let today = new Date();
+    //     let dd = String(today.getDate()).padStart(2, "0");
+    //     let mm =  String(today.getMonth()).padStart(2, "0");
+    //     let yyyy = today.getFullYear();
 
-        today = dd + "/" + mm + "/" + yyyy;
-        return today; 
-    };  
+    //     today = dd + "/" + mm + "/" + yyyy;
+    //     return today; 
+    // };  
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // const imageValidation = !editMode ? imageUrl : true;
         if(title && description ) {
-            const currentDate = getDate();
-            const updatedNoticeData = { ...formValue, date: currentDate };
-            const response = await axios.post("http://localhost:8070/notices/add", updatedNoticeData );
-            if(response.status === 201 ) {
-                toast.success("Notice added successfully");
-                
-            }else{
-                toast.error("Something went wrong");
-                setFormValue({ title: "", description: "" });
-                window.location = '/notices';
+             // const currentDate = getDate();
+            if(!editMode) {
+                // const updatedNoticeData = { ...formValue, date: currentDate };
+                const response = await axios
+                .post("http://localhost:8070/notices/add" );
+                if(response.status === 201 ) {
+                    toast.success("Notice added successfully");
+                }else{
+                    toast.error("Something went wrong");
+                }
+            } else {
+                const response = await axios
+                .put(`http://localhost:8070/notices/update/${id}`, formValue);
+                if(response.status === 201 ) {
+                    toast.success("Notice updated successfully");
+                }else{
+                    toast.error("Something went wrong");
+                }
             }
+            setFormValue({ title: "", description: "" });
+            window.location = '/notices';
         }
     };
 
@@ -74,21 +86,40 @@ const AddEditNotice = () => {
         
     // };
 
-    // const {id} = useParams();
+    const {id} = useParams();
 
-    // useEffect(() => {
+    useEffect(() => {
+        if(id) {
+            setEditMode(true);
+            getSingleNotice(id)
+        }else {
+            setEditMode(false);
+            setFormValue({ ...initialState});
+        }
+    }, [id]);
 
-    // })
-
-    //   
+    const getSingleNotice = async (id) => {
+        const singleNotice = await axios.get(`http://localhost:8070/notices/${id}`)
+        if(singleNotice.status === 200) {
+            setFormValue({ ...singleNotice.data});
+        }else {
+            toast.error("Something went wrong");
+        }
+    }
 
 
     return ( 
-        <><Navbar /><MDBValidation className='row '
+        <>
+        {/* <Navbar /> */}
+        <MDBValidation 
+            className='row '
             style={{ margin: '50px', marginLeft: '400px', width:'800px'}}
-            noValidate onSubmit={handleSubmit}
-        >
-            <h3 style={{ textAlign: 'center', paddingBottom: '10px', fontFamily: 'Poppins' }}> Add Notice </h3>
+            noValidate onSubmit={handleSubmit}>
+
+            <h3 
+                style={{ textAlign: 'center', paddingBottom: '10px', fontFamily: 'Poppins' }}>
+                { editMode ? "Update Notice" : "Add Notice"}
+            </h3>
 
             <div style={{ margin: 'auto', padding: "15px", maxWidth: "400px", alignContent: "center" }}>
 
@@ -129,12 +160,16 @@ const AddEditNotice = () => {
 
                 <br />
 
-                {/* <MDBInput 
-                    type='file'
-                    onChange={(e) => onUploadImage(e.target.files)}
-                    required validation='Please provide a description'
-                    invalid />
-
+                {/* { !editMode && (
+                    <>
+                     <MDBInput 
+                        type='file'
+                        onChange={(e) => onUploadImage(e.target.files)}
+                        required validation='Please provide a description'
+                        invalid />
+                    </>
+                )}
+                
                 <br /> */}
 
                 {/* <div style={{display: 'inline'}}>
@@ -173,13 +208,14 @@ const AddEditNotice = () => {
                 <MDBBtn className='formBtn'
                     type='submit'
                     style={{ marginLeft: '50px', paddingInline: '40px', fontSize: '15PX', marginTop: '30px', marginRight:'20px'}}
-                >ADD
+                >{ editMode ? "Update" : "Add"}
                 </MDBBtn>
-                <MDBBtn color='dark'
-                    style={{ paddingInline: '40px', fontSize: '15PX', marginTop: '20px' }}
-                    onclick={(e) => window.location("/notices")}
-                    >Go Back
-                </MDBBtn>
+                <Link to="/noticeHome">
+                    <MDBBtn color='dark'
+                        style={{ paddingInline: '40px', fontSize: '15PX', marginTop: '20px' }}
+                        >Go Back
+                    </MDBBtn>
+                </Link>
             </div>
         </MDBValidation></>
     )

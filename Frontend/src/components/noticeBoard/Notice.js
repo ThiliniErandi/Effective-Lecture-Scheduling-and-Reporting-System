@@ -10,7 +10,7 @@ import {
     MDBIcon,
 } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
-import Badge from '../../components/noticeBoard/Badge'
+import Badge from './Badge'
 
 const Notices = ({ title, category, description, id, imageUrl, handleDelete }) => {
     return <div >
@@ -29,7 +29,7 @@ const Notices = ({ title, category, description, id, imageUrl, handleDelete }) =
                     <MDBCardTitle > { title } </MDBCardTitle> 
                     <MDBCardText > 
                         { description } 
-                        <Link to = { `/notice/${id}` } > Read More </Link> 
+                        <Link to = { `/viewNotice/${id}` } > Read More </Link> 
                     </MDBCardText >
                     <Badge > { category } </Badge> 
                     <span >
@@ -44,7 +44,7 @@ const Notices = ({ title, category, description, id, imageUrl, handleDelete }) =
                         style = {{ color: '#dd4e39' }}
                         size = 'lg' />
                     </MDBBtn> 
-                    <Link to = { `/editNotice/${id}` } >
+                    <Link to = { `/addEditNotice/${id}` } >
                     <MDBIcon
                         fas
                         icon = 'edit'

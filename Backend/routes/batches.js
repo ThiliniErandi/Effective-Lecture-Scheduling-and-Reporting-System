@@ -1,45 +1,24 @@
 const router = require('express').Router();
-let Notice = require('../models/Notice');
+let Batch = require('../models/Batch');
 
-//create notices
+//create batches
 router.route("/add").post((req, res) => {
     const title = req.body.title;
     const description = req.body.description;
-    // const titleImg = req.files.titleImg;
-
+    //if we include a number data type => const age = Number(req.body.age)
+     
     const newNotice = new Notice({
         title,
-        description,
-        // titleImg
+        description
     })
-
     //passing data to the db
+    //this is a promise(it is as if...else)| exception handlig
     newNotice.save().then(()=>{
         res.json("Notice Added")
     }).catch(()=>{
-        // console.log(err);
+        console.log(err);
     })
 })
-
-//Upload Endpoint
-router.route("/upload").post((req, res) => { 
-    if (req.files === null) {
-        return res.status(400).json({ msg: 'No file uploaded' });
-    }
-
-    const titleImg = req.files.titleImg;
-
-    titleImg.mv(`${__dirname}/../../frontend/public/assets/images/uploads/${titleImg.name}`, err => {
-        if (err) {
-        console.error(err);
-        return res.status(500).send(err);
-        }
-
-        res.json({ fileName: titleImg.name, filePath: `/uploads/${titleImg.name}` });
-    });
-});
-
-
 
 //view notices
 router.route("/view").get((req, res)=>{
@@ -51,14 +30,16 @@ router.route("/view").get((req, res)=>{
 })
 
 //update notices
+
+//can also use POST method
+//async function = do the new req as well previous re at a same time | hope a promise about about task complete to do next task
 router.route("/update/:noticeId").put(async(req, res)=>{
     let notice_id = req.params.noticeId;
     const { title, description } = req.body; //destructure
 
     const updateNotice = {
         title,
-        description,
-        // titleImg
+        description
     }
 
     //await - keep next task wait until came promise on previous success 
@@ -86,6 +67,7 @@ router.route("/delete/:noticeId").delete(async(req,res) => {
 //one notice details view
 router.route("/get/:noticeId").get(async(req, res)=> {
     let notice_id = req.params.noticeId;
+    // await Notice.findOne(title)
     const notice = await Notice.findById(notice_id)
     .then((notice) => {
         res.status(200).send({status: "Notice fetched", notice });
