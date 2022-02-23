@@ -1,5 +1,5 @@
 import SocialMediaIcons from '../components/SocialMediaIcons';
-import LoginComponent from '../components/welcome/LoginComponent';
+import LoginComponent from '../forms/welcome/LoginComponent';
 
 const Welcome = () => {
     return (

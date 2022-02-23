@@ -2,8 +2,9 @@ import React, { useMemo, useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from 'react-toastify';
 import { MDBContainer, MDBBtn } from 'mdb-react-ui-kit';
-import User from './User';
-import Navbar from '../components/Navbar'
+import User from '../../components/user/User';
+import Navbar from '../../components/Navbar'
+import { Link } from 'react-router-dom'
 
 const Users = () => {
 
@@ -53,7 +54,7 @@ const Users = () => {
   }, []);
 
   const handleDelete = async(id) => {
-    if (window.confirm("Are you sure that you wanted to delete this notice?")) {
+    if (window.confirm("Are you sure that you wanted to delete this user?")) {
         const response = await axios.delete(`http://localhost:8070/users/delete/${id}`);
         if (response.status === 200) {
             toast.success("User deleted successfully");
@@ -62,7 +63,7 @@ const Users = () => {
             toast.error("Something went wrong");
         }
     }
-};
+  };
 
   return (<>
     <Navbar/>
@@ -71,9 +72,12 @@ const Users = () => {
       <p>Loading Please wait...</p>
       ) : (
       <MDBContainer style={{marginTop:'20px'}}> 
-        <MDBBtn color="primary" style={{ marginBottom:'20px', float:'right'}}>
-      Add
-    </MDBBtn>
+        <Link to="/addEditUser">
+        <MDBBtn 
+          color="success" 
+          style={{ marginBottom:'20px', float:'right', paddingInline:'30px'}}>
+          Add
+      </MDBBtn></Link>
         { data && data.map((item, index) => ( 
             <User key = { index } {...item }
             handleDelete = { handleDelete }

@@ -8,11 +8,10 @@ const Badge = ({ children, styleInfo }) => {
         Third: "success",
         Fourth: "danger"
     }
-    return ( <
-        h5 style = { styleInfo } >
-        <
-        MDBBadge color = { colorKey[children] } > { children } < /MDBBadge> <
-        /h5>
+    return ( 
+        <h5 style = { styleInfo } >
+        <MDBBadge color = { colorKey[children] } > { children } </MDBBadge> 
+        </h5>
     )
 }
 
