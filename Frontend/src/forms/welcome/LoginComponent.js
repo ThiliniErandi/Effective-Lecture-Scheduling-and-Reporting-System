@@ -73,7 +73,7 @@ const Login = () => {
 
       <div className="row">
         <div className="col from-check ">
-        {/* <input
+        <input
           className='remember'
           name="remember"
           type="checkbox"
@@ -82,7 +82,7 @@ const Login = () => {
           onBlur={formik.handleBlur}
           value={formik.values.rememberPassword}
           id="flexCheckChecked" 
-          /> */}
+          />
         <label className="form-check-label" htmlFor="flexCheckChecked">Remember me</label>
         </div>
         <div className="col">

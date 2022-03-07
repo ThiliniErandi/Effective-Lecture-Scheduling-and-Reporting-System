@@ -6,12 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
-ReactDOM.render( <
-    React.StrictMode >
-    <
-    App / >
-    <
-    /React.StrictMode>,
+ReactDOM.render( 
+    <React.StrictMode>
+     <App/>
+    </React.StrictMode>,
     document.getElementById('root')
 );
 
@@ -19,3 +17,6 @@ ReactDOM.render( <
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+    // "@material-ui/core": "^4.12.3",
+    // "@material-ui/icons": "^4.11.2",

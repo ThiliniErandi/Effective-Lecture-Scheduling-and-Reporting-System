@@ -2,6 +2,30 @@ const router = require('express').Router();
 let Lecturer = require('../models/Lecturer');
 
 //create lecturers
+router.route("/add").post((req, res) => {
+    const lecturer_id= req.body.lecturer_id;
+    const name = req.body.name;
+    const course_id = req.body.course_id;
+    const email= req.body.email;
+    const designation = req.body.designation;
+    const user_id = req.body.user_id;
+
+    const newLecturer = new Lecturer({
+        lecturer_id,
+        name,
+        course_id,
+        email,
+        designation,
+        user_id
+    })
+
+    //passing data to the db
+    newLecturer.save().then(()=>{
+        res.json("Lecturer Added")
+    }).catch(()=>{
+        // console.log(err);
+    })
+})
 
 //view lecturers
 router.route("/view").get((req, res)=>{
@@ -14,19 +38,19 @@ router.route("/view").get((req, res)=>{
 
 //update lecturers
 router.route("/update/:lecturerId").put(async(req, res)=>{
-    let lecturer_id = req.params.lecturerId;
-    const { lecturer_id, name, courses, designation, email, user_id } = req.body;
+    let lecturerid = req.params.lecturerId;
+    const { lecturer_id, name, course_id, designation, email, user_id } = req.body;
 
     const updateLecturer = {
         lecturer_id, 
         name, 
-        courses, 
+        course_id, 
         designation, 
         email, 
         user_id 
     }
 
-    const update = await Lecturer.findByIdAndUpdate( lecturer_id, updateLecturer )
+    const update = await Lecturer.findByIdAndUpdate( lecturerid, updateLecturer )
     .then(() => {
         res.status(200).send({status: "lecturer updated"})
     }).catch((err)=> {
