@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const hodSchema = new Schema ({
     
-    HOD_id : {
+    hod_id : {
         type : String,
         required : true
     },
@@ -12,12 +12,12 @@ const hodSchema = new Schema ({
         type : String,
         required : true
     },
-    courses : {
+    course_id : {
         type : Object,
         required : true
     },
     email : {
-        type : Email,
+        type : String,
         required : true
     },
     designation : {

@@ -1,10 +1,10 @@
-h1 {
+.related-notices {
     overflow: hidden;
     text-align: center;
 }
 
-h1::before,
-h1::after{
+.related-notices::before,
+.related-notices::after{
     background-color: #000;
     content: "";
     display: inline-block;
@@ -14,12 +14,12 @@ h1::after{
     width: 50%;
 }
 
-h1::before{
+.related-notices::before{
     right: 0.5rem;
     margin-left: -50%;
 }
 
-h1::after{
+.related-notices::after{
     left: 0.5rem;
     margin-left: -50%;
 }

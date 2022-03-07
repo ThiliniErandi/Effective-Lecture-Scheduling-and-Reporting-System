@@ -1,125 +1,131 @@
 @font-face {
-  font-family: Poppins;
-  src: url(../public/assets/fonts/Poppins-Regular.ttf);
+    font-family: Poppins;
+    src: url(../public/assets/fonts/Poppins-Regular.ttf);
 }
 
 @font-face {
-  font-family: Montserrat;
-  src: url(../public/assets/fonts/Montserrat-Medium.ttf);
+    font-family: Montserrat;
+    src: url(../public/assets/fonts/Montserrat-Medium.ttf);
 }
 
 @font-face {
-  font-family: Nunito-regular;
-  src: url(../public/assets/fonts/Nunito-Regular.ttf);
+    font-family: Nunito-regular;
+    src: url(../public/assets/fonts/Nunito-Regular.ttf);
 }
 
 * {
-  margin: 0;
+    margin: 0;
 }
 
-body, html {
-  height: 100%;
+body,
+html {
+    height: 100%;
 }
 
 h1,
 h4,
 h5,
 h6 {
-  font-family: Poppins;
-  color: rgb(12, 12, 11) ;
+    font-family: Poppins;
+    color: rgb(12, 12, 11);
 }
 
+
 /*hero banner*/
+
 .hero-banner {
-  background: url("../public/assets/images/hero-banner.jpg");
-  background-color: rgb(0, 0, 0);
-  height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  background-size: cover;
+    background: url("../public/assets/images/hero-banner.jpg");
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    background-size: cover;
 }
 
 .layer {
-  background-color: rgb(241, 162, 8, 0.9);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  filter: brightness(90%);
+    background-color: rgb(241, 162, 8, 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    filter: brightness(90%);
 }
 
-.hero-right-img{
-  padding-top: 0px;
-  padding-right: 0px;
-  width: 560px;
-  height: 753px;
-  float: right;  
+.hero-right-img {
+    padding-top: 0px;
+    padding-right: 0px;
+    width: 560px;
+    height: 746px;
+    float: right;
 }
 
-.hero-text{
-  position: absolute;
-  left: 5%;
-  font-size: 20px;
-  letter-spacing: 2px;
+.hero-text {
+    position: absolute;
+    left: 5%;
+    font-size: 20px;
+    letter-spacing: 2px;
 }
 
-.hero-text h1,h2{
-  text-transform: uppercase;
+.hero-text h1,
+h2 {
+    text-transform: uppercase;
 }
 
-.hero-brand{
-  line-height: 50px;
-  padding-top: 60px;
+.hero-brand {
+    line-height: 50px;
+    padding-top: 60px;
 }
 
-.hero-welcome{
-  padding-top: 90px;
-  color: rgb(8, 8, 8) ;
-  padding-left: 8%;
+.hero-welcome {
+    padding-top: 90px;
+    color: rgb(8, 8, 8);
+    padding-left: 8%;
 }
 
-.hero-welcome h2{
-  letter-spacing: 20px;
-  font-size: 50px;
-  font-weight: 400;
-  font-family: Poppins;
+.hero-welcome h2 {
+    letter-spacing: 20px;
+    font-size: 50px;
+    font-weight: 400;
+    font-family: Poppins;
 }
 
-.hero-welcome h3{
-  font-weight: 100;
-  font-family: Nunito-regular;
+.hero-welcome h3 {
+    font-weight: 100;
+    font-family: Nunito-regular;
 }
 
-.hero-btn-set{
-  padding-top: 390px;
-  padding-left: 9%;
-  display: flex;
+.hero-btn-set {
+    padding-top: 390px;
+    padding-left: 9%;
+    display: flex;
 }
+
 
 /* Home Page */
-.home-welcome{
-  padding-top: 320px;
-  color: rgb(8, 8, 8) ;
-  padding-left: 8%;
+
+.home-welcome {
+    padding-top: 320px;
+    color: rgb(8, 8, 8);
+    padding-left: 8%;
 }
 
-.home-welcome h2{
-  letter-spacing: 20px;
-  font-size: 50px;
-  font-weight: 400;
-  font-family: Poppins;
+.home-welcome h2 {
+    letter-spacing: 20px;
+    font-size: 50px;
+    font-weight: 400;
+    font-family: Poppins;
 }
 
-.home-welcome h3{
-  font-weight: 100;
-  font-family: Nunito-regular;
+.home-welcome h3 {
+    font-weight: 100;
+    font-family: Nunito-regular;
 }
 
 .depRow {
-  margin-top: 50px;
-  margin-bottom: 100px;
+    margin-top: 50px;
+    margin-bottom: 100px;
 }

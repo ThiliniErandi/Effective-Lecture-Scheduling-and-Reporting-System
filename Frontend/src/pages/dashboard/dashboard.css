@@ -1,0 +1,124 @@
+.dashboard{
+    min-height: 100%;
+}
+
+/******************** Sidebar ********************/
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background-color: #12202C;
+    transition: all 1s ;
+    height:628px;
+    width: 160px;
+    z-index: 1;
+    top: 58px;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 0px;
+    position: fixed;
+    
+}
+
+.sidebar-a, .sidebar-a:hover, .sidebar-a:focus {
+    color: #D1D5D9;
+    text-decoration: none;
+    transition: all 0.3s;
+
+}
+
+#sidebar ul li .sidebar-a {
+    padding: 15px;
+    font-size: 1.1em;
+    display: block;
+    
+}
+
+#sidebar ul li .sidebar-a:hover {
+    color: #fff;
+    background: rgb(241, 162, 8, 0.9);
+}
+
+#sidebar ul li.active > .sidebar-a, .sidebar-a[aria-expanded="true"] {
+    color: #fff;
+    background: rgb(241, 162, 8, 0.9);
+}
+
+ul ul .sidebar-a {
+    font-size: 0.9em !important;
+    padding-left: 15px !important ;
+    background: rgb(241, 162, 8, 0.9);
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    height:calc(100vh-8vh);
+}
+
+.mini-sidebar {
+    min-width: 100px !important;
+    max-width: 100px !important;
+    text-align: justify;
+}
+
+.mini-sidebar .nav-icon{
+    display: block;
+    font-size: 24px;
+    font-family: Montserrat;
+    text-align: justify;
+}
+
+.mini-sidebar .sidebar-a{
+    text-align: center;
+}
+.mini-sidebar span{
+    font-size: 10px;
+}
+
+.mini-sidebar #sidebar{
+    margin-top: 60px;
+}
+
+.sidebar-a[data-toggle="collapse"] {
+    position: relative;
+}
+
+#vehicleSubmenu .sidebar-a, #reportSubmenu .sidebar-a {
+    color: #fff;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.sidebar-a .nav-icon {
+    padding-right: 50px !important;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+
+/******************** Footer ********************/
+
+.footer-dashboard{
+    margin-top: 2000px;
+    background-color: #162AE9;
+    width: 103%;
+    font-family: Montserrat;
+    position: fixed;
+    /* margin-left: 0px;
+    margin-right: 0px; */
+    bottom: 0px;
+}

@@ -1,79 +1,75 @@
 const router = require('express').Router();
-let Notice = require('../models/Notice');
+let Department = require('../models/Department');
 
-//create notices
+//create departments
 router.route("/add").post((req, res) => {
-    const title = req.body.title;
-    const description = req.body.description;
-    //if we include a number data type => const age = Number(req.body.age)
+    const dep_id = req.body.dep_id;
+    const name = req.body.name;
      
-    const newNotice = new Notice({
-        title,
-        description
+    const newDepartment = new Department({
+        dep_id,
+        name
     })
+
     //passing data to the db
-    //this is a promise(it is as if...else)| exception handlig
-    newNotice.save().then(()=>{
-        res.json("Notice Added")
+    newDepartment.save().then(()=>{
+        res.json("Department Added")
     }).catch(()=>{
-        console.log(err);
+        // console.log(err);
     })
 })
 
-//view notices
+//view departments
 router.route("/view").get((req, res)=>{
-    Notice.find().then((notices)=>{
-        res.json(notices)
+    Department.find().then((departments)=>{
+        res.json(departments)
     }).catch((err)=>{
         console.log(err)
     })
 })
 
-//update notices
+//update departments
+router.route("/update/:departmentId").put(async(req, res)=>{
+    let department_id = req.params.departmentId;
+    const { dep_id, name } = req.body; //destructure
 
-//can also use POST method
-//async function = do the new req as well previous re at a same time | hope a promise about about task complete to do next task
-router.route("/update/:noticeId").put(async(req, res)=>{
-    let notice_id = req.params.noticeId;
-    const { title, description } = req.body; //destructure
-
-    const updateNotice = {
-        title,
-        description
+    const updateDepartment = {
+        dep_id,
+        name
     }
 
     //await - keep next task wait until came promise on previous success 
-    const update = await Notice.findByIdAndUpdate( notice_id, updateNotice )
+    const update = await Department.findByIdAndUpdate( department_id, updateDepartment )
     .then(() => {
-        res.status(200).send({status: "notice updated"})
+        res.status(200).send({status: "department updated"})
     }).catch((err)=> {
         console.log(err);
         res.status(500).send({status: "Error with updating data", error:err.message});
     }) 
 })
 
-//delete notices
-router.route("/delete/:noticeId").delete(async(req,res) => {
-    let notice_id = req.params.noticeId;
-    await Notice.findByIdAndDelete(notice_id)
+//delete departments
+router.route("/delete/:departmentId").delete(async(req,res) => {
+    let dep_id = req.params.departmentId;
+    await Department.findByIdAndDelete(dep_id)
     .then(()=> {
-        res.status(200).send({status: "Notice deleted"});   
+        res.status(200).send({status: "Department deleted"});   
     }).catch((err)=> {
         console.log(err.message);
-        res.status(500).send({status: "Error with delete notice", error: err.message});
+        res.status(500).send({status: "Error with delete department", error: err.message});
     })
 })
 
-//one notice details view
-router.route("/get/:noticeId").get(async(req, res)=> {
-    let notice_id = req.params.noticeId;
-    // await Notice.findOne(title)
-    const notice = await Notice.findById(notice_id)
-    .then((notice) => {
-        res.status(200).send({status: "Notice fetched", notice });
+//one department details view
+router.route("/get/:depId").get(async(req, res)=> {
+    let dep_id = req.params.depId;
+    // await Department.findOne(title)
+    const dep = await Department.findById(dep_id)
+    .then((department) => {
+        res.status(200).send({status: "Notice fetched", department });
     }).catch(()=> {
         console.log(err.message);
-        res.status(500).send({status: "Error with get notice", error: err.message });
+        res.status(500).send({status: "Error with get department", error: err.message });
     })
 })
 

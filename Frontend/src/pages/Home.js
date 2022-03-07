@@ -38,7 +38,7 @@ const socialIcon = {
 
 const Home = () => {
     return (
-        <div className="home">
+        <div className="home" style={{overflow:'hidden'}}>
             <section className="header">
                 <Header/>
             </section>

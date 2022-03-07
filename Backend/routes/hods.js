@@ -1,79 +1,87 @@
 const router = require('express').Router();
-let Notice = require('../models/Notice');
+let HOD = require('../models/HOD');
 
-//create notices
+//create hods
 router.route("/add").post((req, res) => {
-    const title = req.body.title;
-    const description = req.body.description;
-    //if we include a number data type => const age = Number(req.body.age)
-     
-    const newNotice = new Notice({
-        title,
-        description
+    const hod_id= req.body.hod_id;
+    const name = req.body.name;
+    const course_id = req.body.course_id;
+    const email= req.body.email;
+    const designation = req.body.designation;
+    const user_id = req.body.user_id;
+
+    const newHOD = new HOD({
+        hod_id,
+        name,
+        course_id,
+        email,
+        designation,
+        user_id
     })
+
     //passing data to the db
-    //this is a promise(it is as if...else)| exception handlig
-    newNotice.save().then(()=>{
-        res.json("Notice Added")
+    newHOD.save().then(()=>{
+        res.json("HOD Added")
     }).catch(()=>{
-        console.log(err);
+        // console.log(err);
     })
 })
 
-//view notices
+//view hods
 router.route("/view").get((req, res)=>{
-    Notice.find().then((notices)=>{
-        res.json(notices)
+    HOD.find().then((hods)=>{
+        res.json(hods)
     }).catch((err)=>{
         console.log(err)
     })
 })
 
-//update notices
+//update hods
+router.route("/update/:hodId").put(async(req, res)=>{
+    let head_id = req.params.hodId;
+    const { hod_id, name, course_id, email, designation, user_id } = req.body; //destructure
 
-//can also use POST method
-//async function = do the new req as well previous re at a same time | hope a promise about about task complete to do next task
-router.route("/update/:noticeId").put(async(req, res)=>{
-    let notice_id = req.params.noticeId;
-    const { title, description } = req.body; //destructure
-
-    const updateNotice = {
-        title,
-        description
+    const updateHOD = {
+        hod_id,
+        name,
+        course_id,
+        email,
+        designation,
+        user_id
     }
 
     //await - keep next task wait until came promise on previous success 
-    const update = await Notice.findByIdAndUpdate( notice_id, updateNotice )
+    const update = await HOD.findByIdAndUpdate( head_id, updateHOD)
     .then(() => {
-        res.status(200).send({status: "notice updated"})
+        res.status(200).send({status: "HOD updated"})
     }).catch((err)=> {
         console.log(err);
         res.status(500).send({status: "Error with updating data", error:err.message});
     }) 
 })
 
-//delete notices
-router.route("/delete/:noticeId").delete(async(req,res) => {
-    let notice_id = req.params.noticeId;
-    await Notice.findByIdAndDelete(notice_id)
+//delete hods
+router.route("/delete/:hodId").delete(async(req,res) => {
+    let hod_id = req.params.hodId;
+    await HOD.findByIdAndDelete(hod_id)
     .then(()=> {
-        res.status(200).send({status: "Notice deleted"});   
+        res.status(200).send({status: "HOD deleted"});   
     }).catch((err)=> {
         console.log(err.message);
-        res.status(500).send({status: "Error with delete notice", error: err.message});
+        res.status(500).send({status: "Error with delete HOD", error: err.message});
     })
 })
 
-//one notice details view
-router.route("/get/:noticeId").get(async(req, res)=> {
-    let notice_id = req.params.noticeId;
-    // await Notice.findOne(title)
-    const notice = await Notice.findById(notice_id)
-    .then((notice) => {
-        res.status(200).send({status: "Notice fetched", notice });
+//one HOD details view
+router.route("/get/:hodId").get(async(req, res)=> {
+    let hod_id = req.params.hodId;
+    // await hod.findOne(title)
+    const hod = await HOD.findById(hod_id)
+    .then((hod) => {
+        res.status(200).send({status: "HOD fetched", hod });
     }).catch(()=> {
         console.log(err.message);
-        res.status(500).send({status: "Error with get notice", error: err.message });
+        res.status(500).send({status: "Error with get HOD", error: err.message });
     })
 })
 

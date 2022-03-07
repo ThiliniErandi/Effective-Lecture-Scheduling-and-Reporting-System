@@ -29,12 +29,29 @@ connection.once("open", () => {
     console.log("Mongodb Connection Success!");
 })
 
-const noticeRouter = require('./routes/notices.js')
-app.use("/notices", noticeRouter);
-
 const userRouter = require('./routes/users.js')
 app.use("/users", userRouter);
 
+const hodRouter = require('./routes/hods.js')
+app.use("/hods", hodRouter);
+
+const lecturerRouter = require('./routes/lecturers.js')
+app.use("/lecturers", lecturerRouter);
+
+const stu_batch_repRouter = require('./routes/studentBatchRepresentatives.js')
+app.use("/representatives", stu_batch_repRouter);
+
+const batchrouter = require('./routes/batches.js')
+app.use("/batches", batchrouter);
+
+const departmentRouter = require('./routes/departments.js')
+app.use("/departments", departmentRouter);
+
+const courseRouter = require('./routes/courses.js')
+app.use("/courses", courseRouter);
+
+const noticeRouter = require('./routes/notices.js')
+app.use("/notices", noticeRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on port number: ${PORT}`)
@@ -49,23 +66,9 @@ app.listen(PORT, () => {
 // const scheduleRouter = require('./routes/schedules.js')
 // app.use("/schedules", scheduleRouter);
 
-// const stu_batch_repRouter = require('./routes/studentBatchRepresentatives.js')
-// app.use("/stu_batch_reps", stu_batch_repRouter);
-
 // const timetableRouter = require('./routes/timetables.js')
 // app.use("/timetables", timetableRouter);
-
-// const batchrouter = require('./routes/batches.js')
-// app.use("/batches", batchrouter);
 
 // const chatRouter = require('./routes/chats.js')
 // app.use("/chats", chatRouter);
 
-// const departmentRouter = require('./routes/departments.js')
-// app.use("/departments", departmentRouter);
-
-// const hodRouter = require('./routes/hods.js')
-// app.use("/hods", hodRouter);
-
-// const lecturerRouter = require('./routes/lecturers.js')
-// app.use("/lecturers", lecturerRouter);

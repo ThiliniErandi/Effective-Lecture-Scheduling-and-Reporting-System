@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { MDBBtn, MDBInput, MDBValidation } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import Navbar from '../../components/Navbar';
+import Navbar from '../../../components/Navbar';
 
 const initialState = {
     username: '',

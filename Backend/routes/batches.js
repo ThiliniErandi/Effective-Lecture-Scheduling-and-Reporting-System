@@ -3,77 +3,83 @@ let Batch = require('../models/Batch');
 
 //create batches
 router.route("/add").post((req, res) => {
-    const title = req.body.title;
-    const description = req.body.description;
+    const year       = req.body.year;
+    const department_id = req.body.department_id;
+    const course_id  = req.body.course_id;
+    const hod_id     = req.body.hod_id;
+    const rep_id     = req.body.rep_id;
     //if we include a number data type => const age = Number(req.body.age)
      
-    const newNotice = new Notice({
-        title,
-        description
+    const newBatch = new Batch({
+        year,
+        department_id,
+        course_id,
+        hod_id,
+        rep_id
     })
+
     //passing data to the db
-    //this is a promise(it is as if...else)| exception handlig
-    newNotice.save().then(()=>{
-        res.json("Notice Added")
+    newBatch.save().then(()=>{
+        res.json("Batch Added")
     }).catch(()=>{
-        console.log(err);
+        // console.log(err);
     })
 })
 
-//view notices
+//view batches
 router.route("/view").get((req, res)=>{
-    Notice.find().then((notices)=>{
-        res.json(notices)
+    Batch.find().then((batches)=>{
+        res.json(batches)
     }).catch((err)=>{
-        console.log(err)
+        // console.log(err)
     })
 })
 
-//update notices
+//update batches
+router.route("/update/:batchId").put(async(req, res)=>{
+    let batch_id = req.params.batchId;
+    const { year, department_id, course_id, hod_id, rep_id } = req.body; 
 
-//can also use POST method
-//async function = do the new req as well previous re at a same time | hope a promise about about task complete to do next task
-router.route("/update/:noticeId").put(async(req, res)=>{
-    let notice_id = req.params.noticeId;
-    const { title, description } = req.body; //destructure
-
-    const updateNotice = {
-        title,
-        description
+    const updateBatch = {
+        year, 
+        department_id,
+        course_id, 
+        hod_id, 
+        rep_id,
     }
 
     //await - keep next task wait until came promise on previous success 
-    const update = await Notice.findByIdAndUpdate( notice_id, updateNotice )
+    const update = await Batch.findByIdAndUpdate( batch_id, updateBatch )
     .then(() => {
-        res.status(200).send({status: "notice updated"})
+        res.status(200).send({status: "batch updated"})
     }).catch((err)=> {
         console.log(err);
         res.status(500).send({status: "Error with updating data", error:err.message});
     }) 
 })
 
-//delete notices
-router.route("/delete/:noticeId").delete(async(req,res) => {
-    let notice_id = req.params.noticeId;
-    await Notice.findByIdAndDelete(notice_id)
+//delete batches
+router.route("/delete/:batchId").delete(async(req,res) => {
+    let batch_id = req.params.batchId;
+    await Batch.findByIdAndDelete(batch_id)
     .then(()=> {
-        res.status(200).send({status: "Notice deleted"});   
+        res.status(200).send({status: "Batch deleted"});   
     }).catch((err)=> {
         console.log(err.message);
-        res.status(500).send({status: "Error with delete notice", error: err.message});
+        res.status(500).send({status: "Error with delete batch", error: err.message});
     })
 })
 
-//one notice details view
-router.route("/get/:noticeId").get(async(req, res)=> {
-    let notice_id = req.params.noticeId;
+//one batch details view
+router.route("/get/:batchId").get(async(req, res)=> {
+    let batch_id = req.params.batchId;
     // await Notice.findOne(title)
-    const notice = await Notice.findById(notice_id)
-    .then((notice) => {
-        res.status(200).send({status: "Notice fetched", notice });
+    const batch = await Batch.findById(batch_id)
+    .then((batch) => {
+        res.status(200).send({status: "Batch fetched", batch });
     }).catch(()=> {
         console.log(err.message);
-        res.status(500).send({status: "Error with get notice", error: err.message });
+        res.status(500).send({status: "Error with get batch", error: err.message });
     })
 })
 

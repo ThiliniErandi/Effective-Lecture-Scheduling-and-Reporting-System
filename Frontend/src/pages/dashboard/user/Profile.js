@@ -34,7 +34,7 @@ const Profile = ({ user_name, password, email, user_type, id, new_pwd, confirm_p
             <MDBRow className='w-100'>
                 <MDBCol md="4">
                     <div style={{marginTop:'80px', marginLeft:'50px'}}>
-                        <img className="rounded-circle mb-3" width="165px" height="150px" src="/assets/images/userIcon.png"/>
+                        <img className="rounded-circle mb-3" width="165px" height="150px" src="/assets/images/userIcon.png" alt='user-icon'/>
                             <br />
                             <div >
                                 <span className="font-weight-bold" style={{marginLeft:'50px'}}>Admin</span><br />
@@ -84,7 +84,7 @@ const Profile = ({ user_name, password, email, user_type, id, new_pwd, confirm_p
                     </MDBRow>
                 </MDBCol>
                 <MDBCol md="4" className='text-center mt-5'>
-                    <h5 className="text-center mt-5">Change Password</h5>
+                    <h5 className="text-center mt-5 mb-5">Change Password</h5>
                     <MDBInput 
                         type="text" 
                         value={new_pwd} 
