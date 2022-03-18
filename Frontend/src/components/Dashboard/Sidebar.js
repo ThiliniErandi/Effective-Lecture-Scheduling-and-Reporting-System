@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../../pages/dashboard/dashboard.css';
+import '../../custom.css';
 
 function Sidebar() {
   return (
@@ -55,11 +57,6 @@ function Sidebar() {
                     </Link>
                 </li>
                 <li>
-                    <Link to='/noticeBoard' className="sidebar-a" >
-                      <i className="fa fa-newspaper fa-fw px-4 nav-icon" aria-hidden="true"></i><span>Notices</span>
-                    </Link>
-                </li>
-                <li>
                     <Link to='/representatives' className="sidebar-a" >
                       <i className="fa fa-graduation-cap fa-fw px-4 nav-icon" aria-hidden="true"></i><span>Representatives</span>
                     </Link>
@@ -67,6 +64,11 @@ function Sidebar() {
                 <li>
                     <Link to='/users' className="sidebar-a" >
                       <i className="fa fa-user fa-fw px-4 nav-icon" aria-hidden="true"></i><span>Users</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/noticeBoard' className="sidebar-a" >
+                      <i className="fa fa-newspaper fa-fw px-4 nav-icon" aria-hidden="true"></i><span>Notices</span>
                     </Link>
                 </li>
             </ul>

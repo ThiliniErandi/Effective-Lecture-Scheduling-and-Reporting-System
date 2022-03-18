@@ -11,7 +11,7 @@ const Navbar = () => {
           <a className="navbar-brand me-2 mb-1 d-flex align-items-center">
             <h4 style={{ fontFamily:'Nunito-regular', color:'white' }}>Computing and Information Systems</h4>
           </a>
-        </div>
+      </div>
 
       <ul className="navbar-nav flex-row d-none d-md-flex">
           <li className="nav-item me-3 me-lg-1 active "  style={{ paddingInline:'10px' }}>

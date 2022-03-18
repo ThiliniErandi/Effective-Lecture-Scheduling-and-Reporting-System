@@ -20,7 +20,8 @@ import Dashboard from './pages/dashboard/Dashbord';
 import NoticeBoard from './pages/noticeBoard/NoticeBoard';
     import AddEditNotice from './forms/notice/AddEditNotice';
     import ViewNotice from './pages/noticeBoard/ViewNotice';
-import Profile from './pages/user/Profile'
+import TimeTable from './pages/timetable/timetable.js';
+import Profile from './pages/dashboard/user/Profile'
 import NotFound from './pages/NotFound';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -31,6 +32,7 @@ function App() {
             <div className = "App" >
             <ToastContainer/>
             <Switch >
+                <Route path = "/timetable" > < TimeTable/> </Route> 
                 <Route path = "/viewNotice/:id" > < ViewNotice/> </Route> 
                 <Route path = "/noticeBoard" > < NoticeBoard/> </Route> 
                 <Route path = "/addEditNotice" > < AddEditNotice/> </Route> 
