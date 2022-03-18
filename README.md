@@ -46,3 +46,18 @@ npm install
 ```markdown
  npm i express-fileupload
 ```
+* full calender
+```markdown
+ npm install --save @fullcalendar/react @fullcalendar/daygrid
+```
+* tailwind css
+```markdown
+ npm install -D tailwindcss
+```
+    // "postcss": "^8.4.7",
+
+     "devDependencies": {
+    "@tailwindcss/forms": "^0.5.0",
+    "autoprefixer": "^10.4.2",
+    "tailwindcss": "^3.0.23"
+  }
