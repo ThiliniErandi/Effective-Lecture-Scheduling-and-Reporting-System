@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import dayjs from 'dayjs';
 // import userIcon from '../../assets/userIcon.png';
-import { getMonth } from '../../utils';
 import GlobalContext from '../../context/GlobalContext';
+import { MDBBtn } from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
 
 const CalenderHeader = () => {
 
@@ -41,6 +42,9 @@ const CalenderHeader = () => {
       <h2 className="ml-4 text-xl text-gray-500 font-bold">
         {dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}
       </h2>
+      <Link to='/reports' style={{ paddingLeft: '600px'}}>
+        <MDBBtn pill color='success' style={{paddingInline:'100px', letterSpacing: '2px', fontWeight:'bold', fontSize:'15px'}}>Reports</MDBBtn>
+      </Link>
     </header>
   )
 }

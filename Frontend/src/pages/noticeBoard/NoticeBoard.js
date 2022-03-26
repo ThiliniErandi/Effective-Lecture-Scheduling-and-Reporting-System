@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { MDBRow, MDBCol, MDBContainer, MDBTypography } from 'mdb-react-ui-kit';
-import Notices from '../../components/noticeBoard/Notice';
-import Navbar from '../../components/Navbar'
+import { MDBRow, MDBCol, MDBContainer, MDBTypography, MDBBtn } from 'mdb-react-ui-kit';
+import Notice from '../../components/NoticeBoard/Notice';
+import { Link } from 'react-router-dom';
+
+const depH1 = {
+    textAlign: 'center',
+    marginTop: '70px',
+    fontFamily: 'Montserrat',
+    marginBottom: '0px',
+}
 
 const NoticeHome = () => {
     const [data, setData] = useState([]);
@@ -43,30 +50,37 @@ const NoticeHome = () => {
         return str;
     };
 
-    return ( <>
-        <Navbar/>
-        <MDBRow> {
+    return ( <> { /* <Navbar/> */ } 
+        <h1 style = { depH1 } > NOTICE BOARD </h1> 
+        <Link to="/addEditNotice">
+                    <MDBBtn color='success'
+                        style={{ paddingInline: '40px', fontSize: '15PX', marginTop: '20px', marginLeft:'1100px' }}
+                        >Create Notice
+                    </MDBBtn>
+                </Link>
+        <MDBRow style = {{ paddingLeft: '75px', paddingRight: '75px',  }} > {
             data.length === 0 && ( 
                 <MDBTypography className = 'text-center mb-0'
-                tag = 'h2' >
-                No Notice Found 
+                    tag = 'h2' >
+                    No Notice Found 
                 </MDBTypography>
-        )} 
-        <MDBCol>
-        <MDBContainer>
-        <MDBRow> {
-            data && data.map((item, index) => ( 
-                <Notices key = { index } {...item }
-                excerpt = { excerpt }
-                handleDelete = { handleDelete }/>
-            ))
-        } 
-        </MDBRow> 
-        </MDBContainer> 
-        </MDBCol> 
-        </MDBRow> 
-            </>
-
+            )} 
+            <MDBCol>
+                <MDBContainer >
+                    <MDBRow style = {{ width: '1350px' }}> 
+                    {
+                        data && data.map((item, index) => ( 
+                            <Notice key = { index } {...item }
+                            excerpt = { excerpt }
+                            handleDelete = { handleDelete }
+                            />
+                        ))
+                    } 
+                    </MDBRow>  
+                </MDBContainer>  
+            </MDBCol>  
+        </MDBRow>  
+        </>
     );
 };
 

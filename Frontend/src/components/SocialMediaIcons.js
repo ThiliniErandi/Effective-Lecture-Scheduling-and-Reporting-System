@@ -2,18 +2,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitterSquare } from "@fortawesome/free-brands-svg-icons";
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import '../custom.css';
 
 export default function SocialMediaIcons() {
-    return <div className = "SocialMediaIcons"
-    style = {{
-                color: '#fff',
-                fontSize: '75px',
-                // paddingRight: '10px',
-                paddingLeft: '1280px',
-                marginTop: '20px',
-                position: 'absolute',
-                float: 'right'
-            }} >
+    return <div className = "SocialMediaIcons">
         <FontAwesomeIcon
             href = ""
             className = 'social-icon'

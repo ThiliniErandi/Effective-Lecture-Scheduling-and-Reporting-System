@@ -9,9 +9,9 @@ import {
     MDBTableBody,
     MDBTableHead,
 } from 'mdb-react-ui-kit';
-import Batch from '../../../components/DashboardComponents/batch/Batch';
+import Batch from '../../../components/Dashboard/batch/Batch';
 import Navbar from "../../../components/Navbar";
-import Sidebar from '../../../components/DashboardComponents/Sidebar';
+import Sidebar from '../../../components/Dashboard/Sidebar';
 import { Row } from 'react-bootstrap';
 import '../dashboard.css';
 

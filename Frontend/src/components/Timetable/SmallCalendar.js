@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 
-import { getMonth } from '../../utils';
+import { getMonth } from '../../utils/utils';
 import GlobalContext from '../../context/GlobalContext';
 
 const SmallCalendar = () => {

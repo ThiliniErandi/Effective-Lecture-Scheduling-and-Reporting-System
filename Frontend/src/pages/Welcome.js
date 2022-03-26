@@ -1,5 +1,6 @@
 import SocialMediaIcons from '../components/SocialMediaIcons';
 import LoginComponent from '../forms/welcome/LoginComponent';
+import '../custom.css';
 
 const Welcome = () => {
     return (
@@ -7,7 +8,7 @@ const Welcome = () => {
         <div className="layer">
             <img className="hero-right-img" src="../assets/images/hero-right-img.png" alt='hero-right-img'/>
             <div className="social-follow">
-                <SocialMediaIcons/>
+                <SocialMediaIcons />
             </div>
             <div className="hero-text">
                 <div className="hero-brand">

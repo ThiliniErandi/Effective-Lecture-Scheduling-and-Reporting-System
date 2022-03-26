@@ -1,16 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './custom.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import ContextWrapper from './context/ContextWrapper';
 
+import "./assets/css/index.css";
+import { UsersProvider } from "./context/usersContext";
+import { SocketProvider } from "./context/socketContext";
+
 ReactDOM.render( 
     <React.StrictMode>
         <ContextWrapper>
-            <App/>
+            <SocketProvider>
+                <UsersProvider>
+                    <App/>
+                </UsersProvider>
+            </SocketProvider>
         </ContextWrapper>
     </React.StrictMode>,
     document.getElementById('root')

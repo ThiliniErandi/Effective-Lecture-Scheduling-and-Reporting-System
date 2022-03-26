@@ -8,10 +8,10 @@ import {
     MDBTableBody,
     MDBTableHead,
 } from 'mdb-react-ui-kit';
-import HOD from '../../../components/DashboardComponents/hod/HOD';
+import HOD from '../../../components/Dashboard/hod/HOD';
 import Navbar from '../../../components/Navbar'
 import { Link } from 'react-router-dom';
-import Sidebar from '../../../components/DashboardComponents/Sidebar';
+import Sidebar from '../../../components/Dashboard/Sidebar';
 import { Row } from 'react-bootstrap';
 import '../dashboard.css';
 

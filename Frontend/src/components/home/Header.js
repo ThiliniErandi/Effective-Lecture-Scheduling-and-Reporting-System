@@ -1,14 +1,15 @@
-import SocialMediaIcons from '../SocialMediaIcons';
+import SocialMediaIcons from '../Home/SocialMediaIcons';
+import '../../custom.css';
 
 export default function Header() {
-    return <div className="hero-banner">
-                <div className="layer">
-                    <img className="hero-right-img" src="../assets/images/hero-right-img.png" alt='hero-right-img'/>
+    return <div className="hero-banner-home">
+                <div className="layer-home">
+                    <img className="hero-right-img-home" src="../assets/images/hero-right-img.png" alt='hero-right-img'/>
                     <div className="social-follow">
                         <SocialMediaIcons/>
                     </div>
                     <div className="hero-text">
-                        <div className="hero-brand">
+                        <div className="hero-brand-home">
                             <h1>Effective Lecture Scheduling </h1>
                             <h1>& Reporting System</h1>
                         </div>
