@@ -2,8 +2,8 @@ import { Container, Col, Row } from "react-bootstrap";
 
 export default function Footer() {
     return (
-        <div className = "font-small pt-4 mt-6"
-             style = {{ color: 'white', position:'relative', marginTop:'500px'  } } >
+        <div className = "font-small"
+             style = {{ color: 'white', position:'relative', marginTop:'100px'  } } >
             <Container fluid className = "text-center text-md-left"
                        style = {{ backgroundColor: '#3B3B3B', paddingTop: '40px' } } >
                 <Row className = "w-100"

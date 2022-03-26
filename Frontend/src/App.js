@@ -20,7 +20,10 @@ import Dashboard from './pages/dashboard/Dashbord';
 import NoticeBoard from './pages/noticeBoard/NoticeBoard';
     import AddEditNotice from './forms/notice/AddEditNotice';
     import ViewNotice from './pages/noticeBoard/ViewNotice';
-import TimeTable from './pages/timetable/timetable.js';
+import TimeTable from './pages/timetable/timetable';
+import Chats from './pages/chat/chats';
+    // import ChatHome from './pages/chat/Home/index';
+    // import Chat from './pages/chat/Chat';
 import Profile from './pages/dashboard/user/Profile'
 import NotFound from './pages/NotFound';
 import { ToastContainer } from 'react-toastify';
@@ -33,6 +36,9 @@ function App() {
             <ToastContainer/>
             <Switch >
                 <Route path = "/timetable" > < TimeTable/> </Route> 
+                <Route path = "/chats" > < Chats/> </Route> 
+                {/* <Route path = "/chatHome" > <ChatHome/></Route> 
+                <Route path = "/chat/:id" component={Chat} ></Route>  */}
                 <Route path = "/viewNotice/:id" > < ViewNotice/> </Route> 
                 <Route path = "/noticeBoard" > < NoticeBoard/> </Route> 
                 <Route path = "/addEditNotice" > < AddEditNotice/> </Route> 

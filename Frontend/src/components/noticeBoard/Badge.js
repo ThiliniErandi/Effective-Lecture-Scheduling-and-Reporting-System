@@ -3,10 +3,11 @@ import { MDBBadge } from 'mdb-react-ui-kit'
 
 const Badge = ({ children, styleInfo }) => {
     const colorKey = {
-        First: "warning",
-        Second: "secondary",
-        Third: "success",
-        Fourth: "danger"
+        CIS: "warning",
+        FST: "secondary",
+        PST: "primary",
+        NR: "success",
+        SPORTS: "danger"
     }
     return ( 
         <h5 style = { styleInfo } >

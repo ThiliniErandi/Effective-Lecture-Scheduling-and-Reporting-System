@@ -110,7 +110,7 @@ const AddEditNotice = () => {
 
     return ( 
         <>
-        {/* <Navbar /> */}
+        <Navbar />
         <MDBValidation 
             className='row '
             style={{ margin: '50px', marginLeft: '400px', width:'800px'}}
@@ -210,7 +210,7 @@ const AddEditNotice = () => {
                     style={{ marginLeft: '50px', paddingInline: '40px', fontSize: '15PX', marginTop: '30px', marginRight:'20px'}}
                 >{ editMode ? "Update" : "Add"}
                 </MDBBtn>
-                <Link to="/noticeHome">
+                <Link to="/home">
                     <MDBBtn color='dark'
                         style={{ paddingInline: '40px', fontSize: '15PX', marginTop: '20px' }}
                         >Go Back

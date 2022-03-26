@@ -8,10 +8,10 @@ import {
     MDBTableBody,
     MDBTableHead,
 } from 'mdb-react-ui-kit';
-import User from '../../../components/DashboardComponents/user/User';
+import User from '../../../components/Dashboard/user/User';
 import Navbar from '../../../components/Navbar'
 import { Link } from 'react-router-dom';
-import Sidebar from '../../../components/DashboardComponents/Sidebar';
+import Sidebar from '../../../components/Dashboard/Sidebar';
 import { Row } from 'react-bootstrap';
 import '../dashboard.css';
 
@@ -42,7 +42,7 @@ const Users = () => {
 
     const handleDelete = async(id) => {
         if (window.confirm("Are you sure that you wanted to delete this user?")) {
-            const response = await axios.delete(`http://localhost:8070/users/delete/${id}`);
+            const response = await axios.delete("http://localhost:8070/users/delete/6207edd511e120e162e87356");
             console.log(response);
             if (response.status === 200) {
                 toast.success("User deleted successfully");
@@ -70,7 +70,7 @@ const Users = () => {
                      Back</MDBBtn>
                 </Link >
 
-                <Link to = "/addEditUser" >
+                <Link to = {`/addEditUser?id=`} >
                     <MDBBtn color = "success"
                     style = {{ marginBottom: '30px', float: 'right', paddingInline: '30px' } } >
                     Add </MDBBtn>

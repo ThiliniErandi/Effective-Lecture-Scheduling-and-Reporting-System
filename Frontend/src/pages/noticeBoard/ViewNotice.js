@@ -13,7 +13,7 @@ import {
 } from 'mdb-react-ui-kit';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import Badge from '../../components/noticeBoard/Badge';
+import Badge from '../../components/NoticeBoard/Badge';
 import { toast } from 'react-toastify';
 import './notice.css';
 

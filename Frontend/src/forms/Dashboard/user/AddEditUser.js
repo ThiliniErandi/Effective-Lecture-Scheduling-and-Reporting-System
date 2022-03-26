@@ -35,7 +35,7 @@ const AddEditUser = () => {
                 }
             }else {
                 const response = await axios
-                .put(`http://localhost:8070/users/update/${id}`, formValue);
+                .put("http://localhost:8070/users/update/6207c99611e120e162e87354", formValue);
                 if(response.status === 201 ) {
                     toast.success("User updated successfully");
                 }else{

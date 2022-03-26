@@ -53,7 +53,7 @@ ul ul .sidebar-a {
 .wrapper {
     display: flex;
     width: 100%;
-    align-items: stretch;
+    /* align-items: stretch; */
     height:calc(100vh-8vh);
 }
 

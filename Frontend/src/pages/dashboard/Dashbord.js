@@ -1,7 +1,8 @@
-import Sidebar from '../../components/DashboardComponents/Sidebar';
+import Sidebar from '../../components/Dashboard/Sidebar';
 import Navbar from '../../components/Navbar';
 import { Row } from 'react-bootstrap';
 import './dashboard.css';
+import '../../custom.css';
 
 const Dashboard = () => {
     return ( 
