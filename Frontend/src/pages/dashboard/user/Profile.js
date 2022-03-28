@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { MDBCol, MDBRow, MDBInput, MDBBtn, MDBContainer } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Navbar from '../../../components/Navbar'
+import Navbar from '../../../components/Navbar';
+import Footer from '../../../components/Footer'
 
 const Profile = ({ user_name, password, email, user_type, id, new_pwd, confirm_pwd }) => {
 
@@ -103,6 +104,7 @@ const Profile = ({ user_name, password, email, user_type, id, new_pwd, confirm_p
                 </MDBCol>
             </MDBRow>
         </MDBContainer>
+        <Footer />
         </>
     );
 }

@@ -4,18 +4,18 @@ const Schema = mongoose.Schema;
 
 const timetableSchema = new Schema({
 
-    // timetable_id : {
-    //     type : String,
-    //     required : true
-    // },
+    timetable_id : {
+        type : String,
+        required : true
+    },
     name: {
         type: String,
         required: true
     },
-    type: {
-        type: String,
-        required: true
-    },
+    // type: {
+    //     type: String,
+    //     required: true
+    // },
     batch_id: {
         type: String,
         required: true

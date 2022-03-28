@@ -42,7 +42,7 @@ const CalenderHeader = () => {
       <h2 className="ml-4 text-xl text-gray-500 font-bold">
         {dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}
       </h2>
-      <Link to='/reports' style={{ paddingLeft: '600px'}}>
+      <Link to='/report' style={{ paddingLeft: '600px'}}>
         <MDBBtn pill color='success' style={{paddingInline:'100px', letterSpacing: '2px', fontWeight:'bold', fontSize:'15px'}}>Reports</MDBBtn>
       </Link>
     </header>

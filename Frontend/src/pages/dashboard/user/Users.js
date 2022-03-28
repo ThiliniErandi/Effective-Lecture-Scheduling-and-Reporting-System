@@ -42,11 +42,11 @@ const Users = () => {
 
     const handleDelete = async(id) => {
         if (window.confirm("Are you sure that you wanted to delete this user?")) {
-            const response = await axios.delete("http://localhost:8070/users/delete/6207edd511e120e162e87356");
+            const response = await axios.delete(`http://localhost:8070/users/delete/623603a4130d2f850ece0d38`);
             console.log(response);
             if (response.status === 200) {
                 toast.success("User deleted successfully");
-                loadingData();
+                // loadingData();
             } else {
                 toast.error("Something went wrong");
             }

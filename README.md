@@ -54,6 +54,10 @@ npm install
 ```markdown
  npm install -D tailwindcss
 ```
+
+
+
+
     // "postcss": "^8.4.7",
 
      "devDependencies": {
@@ -61,3 +65,10 @@ npm install
     "autoprefixer": "^10.4.2",
     "tailwindcss": "^3.0.23"
   }
+
+  {
+  "user_name" :"Admin",
+  "password":"admin123",
+  "email":"admin@gmail.com",
+  "user_type":"admin"
+}

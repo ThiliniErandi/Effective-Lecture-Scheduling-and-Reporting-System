@@ -40,9 +40,9 @@ const Departments = () => {
         }
     }, []);
 
-    const handleDelete = async(id) => {
+    const handleDelete = async(dep_id) => {
         if (window.confirm("Are you sure that you wanted to delete this department?")) {
-            const response = await axios.delete(`http://localhost:8070/departments/delete/${id}`);
+            const response = await axios.delete(`http://localhost:8070/departments/delete/${dep_id}`);
             if (response.status === 200) {
                 toast.success("Department deleted successfully");
                 loadingData();

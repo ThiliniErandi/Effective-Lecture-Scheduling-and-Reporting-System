@@ -3,9 +3,9 @@ let Timetable = require('../models/Timetable');
 
 //create timetables
 router.route("/add").post((req, res) => {
-    const timetable_id      = req.body.chat_id;
+    const timetable_id      = req.body.timetable_id;
     const name = req.body.name;
-    const type  = req.body.type;
+    // const type  = req.body.type;
     const lecturer_id   = req.body.lecturer_id;
     const batch_id     = req.body.batch_id;
     const rep_id     = req.body.rep_id;
@@ -13,7 +13,7 @@ router.route("/add").post((req, res) => {
     const newTimetable = new Timetable({
         timetable_id,
         name,
-        type,
+        // type,
         lecturer_id,
         batch_id,
         rep_id
