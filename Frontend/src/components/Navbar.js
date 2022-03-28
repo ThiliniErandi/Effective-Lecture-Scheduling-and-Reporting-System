@@ -20,7 +20,7 @@ export default function App() {
   const [showNavRight, setShowNavRight] = useState(false);
 
   return (
-    <MDBNavbar expand='lg' style={{backgroundColor: '#0F304D'}}>
+    <MDBNavbar expand='lg' style={{backgroundColor: '#0F304D', width:'100%'}}>
       <MDBContainer fluid style={{height:'42px', paddingTop:'20px'}}>
         <MDBNavbarToggler
           type='button'

@@ -9,7 +9,7 @@ function Sidebar() {
 
         <nav id="sidebar">
 
-            <ul className="list-unstyled components">
+            <ul className="list-unstyled components" style={{textAlign:'left'}}>
                 <li>
                     <Link to='/dashboard' className="sidebar-a" >
                         <i className="fa fa-tv fa-fw px-4 nav-icon" aria-hidden="true"></i><span>Dashboard</span>
@@ -66,11 +66,12 @@ function Sidebar() {
                       <i className="fa fa-user fa-fw px-4 nav-icon" aria-hidden="true"></i><span>Users</span>
                     </Link>
                 </li>
-                <li>
+                <hr />
+                {/* <li>
                     <Link to='/noticeBoard' className="sidebar-a" >
                       <i className="fa fa-newspaper fa-fw px-4 nav-icon" aria-hidden="true"></i><span>Notices</span>
                     </Link>
-                </li>
+                </li> */}
             </ul>
         </nav>
 

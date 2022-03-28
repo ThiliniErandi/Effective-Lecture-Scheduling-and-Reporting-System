@@ -21,6 +21,8 @@ import NoticeBoard from './pages/noticeBoard/NoticeBoard';
     import AddEditNotice from './forms/notice/AddEditNotice';
     import ViewNotice from './pages/noticeBoard/ViewNotice';
 import TimeTable from './pages/timetable/timetable';
+import Report from './pages/Report/Report';
+// import PDF from './pages/Report/PDF';
 import Chats from './pages/chat/chats';
     // import ChatHome from './pages/chat/Home/index';
     // import Chat from './pages/chat/Chat';
@@ -36,6 +38,8 @@ function App() {
             <ToastContainer/>
             <Switch >
                 <Route path = "/timetable" > < TimeTable/> </Route> 
+                <Route path = "/report" > < Report/> </Route> 
+                {/* <Route path = "/pdf" > < PDF/> </Route>  */}
                 <Route path = "/chats" > < Chats/> </Route> 
                 {/* <Route path = "/chatHome" > <ChatHome/></Route> 
                 <Route path = "/chat/:id" component={Chat} ></Route>  */}

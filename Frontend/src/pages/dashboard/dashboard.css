@@ -1,6 +1,10 @@
-.dashboard{
-    min-height: 100%;
+.dashboard {
+    max-height: 100%;
+    max-width: 100%;
+    padding: 0%;
+    margin: 0%;
 }
+
 
 /******************** Sidebar ********************/
 
@@ -8,8 +12,8 @@
     min-width: 250px;
     max-width: 250px;
     background-color: #12202C;
-    transition: all 1s ;
-    height:628px;
+    transition: all 1s;
+    height: 628px;
     width: 160px;
     z-index: 1;
     top: 58px;
@@ -17,21 +21,20 @@
     overflow-x: hidden;
     padding-top: 0px;
     position: fixed;
-    
 }
 
-.sidebar-a, .sidebar-a:hover, .sidebar-a:focus {
+.sidebar-a,
+.sidebar-a:hover,
+.sidebar-a:focus {
     color: #D1D5D9;
     text-decoration: none;
     transition: all 0.3s;
-
 }
 
 #sidebar ul li .sidebar-a {
     padding: 15px;
     font-size: 1.1em;
     display: block;
-    
 }
 
 #sidebar ul li .sidebar-a:hover {
@@ -39,14 +42,15 @@
     background: rgb(241, 162, 8, 0.9);
 }
 
-#sidebar ul li.active > .sidebar-a, .sidebar-a[aria-expanded="true"] {
+#sidebar ul li.active>.sidebar-a,
+.sidebar-a[aria-expanded="true"] {
     color: #fff;
     background: rgb(241, 162, 8, 0.9);
 }
 
 ul ul .sidebar-a {
     font-size: 0.9em !important;
-    padding-left: 15px !important ;
+    padding-left: 15px !important;
     background: rgb(241, 162, 8, 0.9);
 }
 
@@ -54,7 +58,7 @@ ul ul .sidebar-a {
     display: flex;
     width: 100%;
     /* align-items: stretch; */
-    height:calc(100vh-8vh);
+    height: calc(100vh-8vh);
 }
 
 .mini-sidebar {
@@ -63,21 +67,22 @@ ul ul .sidebar-a {
     text-align: justify;
 }
 
-.mini-sidebar .nav-icon{
+.mini-sidebar .nav-icon {
     display: block;
     font-size: 24px;
     font-family: Montserrat;
     text-align: justify;
 }
 
-.mini-sidebar .sidebar-a{
+.mini-sidebar .sidebar-a {
     text-align: center;
 }
-.mini-sidebar span{
+
+.mini-sidebar span {
     font-size: 10px;
 }
 
-.mini-sidebar #sidebar{
+.mini-sidebar #sidebar {
     margin-top: 60px;
 }
 
@@ -85,7 +90,8 @@ ul ul .sidebar-a {
     position: relative;
 }
 
-#vehicleSubmenu .sidebar-a, #reportSubmenu .sidebar-a {
+#vehicleSubmenu .sidebar-a,
+#reportSubmenu .sidebar-a {
     color: #fff;
 }
 
@@ -110,12 +116,13 @@ ul ul .sidebar-a {
     }
 }
 
+
 /******************** Footer ********************/
 
-.footer-dashboard{
+.footer-dashboard {
     margin-top: 2000px;
     background-color: #162AE9;
-    width: 103%;
+    width: 101%;
     font-family: Montserrat;
     position: fixed;
     /* margin-left: 0px;
