@@ -90,7 +90,7 @@ router.route("/get/:noticeId").get(async(req, res)=> {
     .then((notice) => {
         res.status(200).send({status: "Notice fetched", notice });
     }).catch(()=> {
-        console.log(err.message);
+        // console.log(err.message);
         res.status(500).send({status: "Error with get notice", error: err.message });
     })
 })

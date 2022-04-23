@@ -12,16 +12,26 @@ import {
   MDBDropdownMenu,
   MDBDropdownToggle,
   MDBDropdownItem,
-  MDBDropdownLink
+  MDBDropdownLink,
+  MDBBtn,
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+  MDBModalFooter,
+  MDBCardText,
 } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 
 export default function App() {
   const [showNavRight, setShowNavRight] = useState(false);
+  const [scrollableModal, setScrollableModal] = useState(false);
 
   return (
-    <MDBNavbar expand='lg' style={{backgroundColor: '#0F304D', width:'100%'}}>
-      <MDBContainer fluid style={{height:'42px', paddingTop:'20px'}}>
+    <MDBNavbar expand='lg' style={{backgroundColor: '#1A4797', width:'100%'}}>
+      <MDBContainer fluid style={{height:'40px', paddingTop:'8px'}}>
         <MDBNavbarToggler
           type='button'
           data-target='#navbarRightAlignExample'
@@ -34,7 +44,9 @@ export default function App() {
         </MDBNavbarToggler>
 
         <MDBCollapse navbar show={showNavRight}>
+        <img src='../assets/images/logo.png' width='250px' height='30px' alt='logo'/>
           <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0'>
+       
             <MDBNavbarItem>
               <Link to='/home' style={{ paddingInline: '20px'}}>
                 <MDBIcon fas icon='home fa-lg' style={{ color:'white'}}/>
@@ -81,11 +93,89 @@ export default function App() {
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavbarItem>
-            <MDBNavbarItem>
-              <Link style={{ paddingInline: '20px'}}>
-                <MDBIcon fas icon='bell fa-lg' style={{ color:'white'}}/>
-                <span className="badge rounded-pill badge-notification bg-danger">12</span>
-              </Link>
+            <MDBNavbarItem style={{marginTop:'-10px'}} >
+            <MDBDropdown style={{paddingInline: '20px', }} onClick={() => setScrollableModal(!scrollableModal)}>
+                <MDBDropdownToggle tag='a' className='nav-link' style={{marginRight:'7px', color:'#1A4797'}}>
+                  <MDBIcon fas icon='bell fa-lg' style={{ color:'white'}}/>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu dark show={scrollableModal} setShow={setScrollableModal} tabIndex='-1'>
+                  <MDBDropdownItem>
+                  <MDBDropdownLink><Link to='/' style={{fontSize:'18px'}}>Notifications</Link></MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink >
+                        <MDBCardText>
+                          <MDBIcon fas icon='bullhorn fa-md' style={{ color:'orange', paddingRight:'10px'}}/> 
+                            Dr.Perera has posted a new notice <br /> 
+                            <span style={{paddingLeft:'25px'}}>1 hour ago</span>
+                        </MDBCardText>
+                    </MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink > 
+                        <MDBCardText>
+                          <MDBIcon fas icon='comment fa-md' style={{ color:'blue', paddingRight:'10px'}}/>
+                            Chloe Gileshas has sent you a message <br />
+                            <span style={{paddingLeft:'25px'}}>3 hour ago</span>
+                        </MDBCardText>
+                    </MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink >
+                        <MDBCardText>
+                          <MDBIcon fas icon='users fa-md' style={{ color:'purple', paddingRight:'10px'}}/>
+                            Ms.Alisha Church has cancelled the lecture <br />
+                            <span style={{paddingLeft:'25px'}}>4 hour ago</span>
+                        </MDBCardText>
+                    </MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink >
+                        <MDBCardText>
+                          <MDBIcon fas icon='users fa-md' style={{ color:'purple', paddingRight:'10px'}}/>
+                            Mr. Evan Novak has scheduled a lecture <br />
+                            <span style={{paddingLeft:'25px'}}>8 hours ago</span>
+                        </MDBCardText>
+                    </MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink>
+                        <MDBCardText>
+                          <MDBIcon fas icon='users fa-md' style={{ color:'purple', paddingRight:'10px'}}/>
+                            Ms.Alisha Church has scheduled a lecture <br />
+                            <span style={{paddingLeft:'25px'}}>1 day ago</span>
+                        </MDBCardText>
+                    </MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink >
+                        <MDBCardText>
+                          <MDBIcon fas icon='comment fa-md' style={{ color:'blue', paddingRight:'10px'}}/> 
+                            Mr.Leonard Jones has sent you a message <br /> 
+                            <span style={{paddingLeft:'25px'}}>1 day 1 hour ago</span>
+                        </MDBCardText>
+                    </MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink >
+                        <MDBCardText>
+                          <MDBIcon fas icon='bullhorn fa-md' style={{ color:'orange', paddingRight:'10px'}}/> 
+                            Dr.Reagan Key has posted a new notice <br /> 
+                            <span style={{paddingLeft:'25px'}}>1 day 5 hour ago</span>
+                        </MDBCardText>
+                    </MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink >
+                        <MDBCardText>
+                          <MDBIcon fas icon='users fa-md' style={{ color:'purple', paddingRight:'10px'}}/> 
+                            Prof.Alijah Briggs has scheduled a lecture <br /> 
+                            <span style={{paddingLeft:'25px'}}>1 day 15 hour ago</span>
+                        </MDBCardText>
+                    </MDBDropdownLink>
+                  </MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
             </MDBNavbarItem>
             <MDBNavbarItem>
               <Link to='/chats' style={{ paddingInline: '20px'}}>
@@ -96,7 +186,7 @@ export default function App() {
             <MDBNavbarItem style={{marginTop:'-10px'}}>
               <MDBDropdown style={{paddingInline: '20px', }}>
                 <MDBDropdownToggle tag='a' className='nav-link' style={{marginRight:'7px', color:'white'}}>
-                  <img src="../assets/images/profile-picture-girl-3.jpeg" style={{height:'30px', width:'30px', borderRadius:'15px'}} />
+                  <img src="../assets/images/profile-picture-girl-3.jpeg" style={{height:'30px', width:'30px', borderRadius:'15px'}} alt='pro-pic'/>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu dark>
                   <MDBDropdownItem>
@@ -122,3 +212,41 @@ export default function App() {
     </MDBNavbar>
   );
 }
+
+
+
+
+
+
+{/* <MDBIcon fas icon='bell fa-lg' style={{ color:'white', cursor: 'pointer',  }} onClick={() => setScrollableModal(!scrollableModal)}/>
+<span className="badge rounded-pill badge-notification bg-danger">12</span>
+<MDBModal show={scrollableModal} setShow={setScrollableModal} tabIndex='-1'>
+<MDBModalDialog scrollable>
+  <MDBModalContent>
+    <MDBModalHeader>
+      <MDBModalTitle>Modal title</MDBModalTitle>
+      <MDBBtn
+        className='btn-close'
+        color='none'
+        onClick={() => setScrollableModal(!scrollableModal)}
+      ></MDBBtn>
+  </MDBModalHeader>
+    <MDBModalBody>
+      <p>
+        Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+        egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+      </p>
+      <p>
+        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel
+        augue laoreet rutrum faucibus dolor auctor.
+      </p>
+    </MDBModalBody>
+    <MDBModalFooter>
+      <MDBBtn color='secondary' onClick={() => setScrollableModal(!setScrollableModal)}>
+        Close
+      </MDBBtn>
+      <MDBBtn>Save changes</MDBBtn>
+    </MDBModalFooter>
+  </MDBModalContent>
+</MDBModalDialog>
+</MDBModal> */}

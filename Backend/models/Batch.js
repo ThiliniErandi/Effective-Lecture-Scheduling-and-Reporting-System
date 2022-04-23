@@ -16,10 +16,10 @@ const batchSchema = new Schema({
         type: String,
         required: true
     },
-    course_id: {
-        type: String,
-        required: true
-    },
+    // course_id: {
+    //     type: String,
+    //     required: true
+    // },
     hod_id: {
         type: String,
         required: true
