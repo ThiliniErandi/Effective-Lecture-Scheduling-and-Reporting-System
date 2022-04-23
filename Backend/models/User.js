@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+// const bcrypt = require('bcryptjs');
+// const jwt = require('jsonwebtoken');
 
 const Schema = mongoose.Schema;
 
@@ -10,11 +12,15 @@ const userSchema = new Schema ({
     // },
     user_name : {
         type : String,
-        required : true
+        unique: true,
+        required : true,
+        trim: true
     },
     password : {
         type : String,
-        required : true
+        required : true,
+        trim: true,
+        minilength: 8
     },
     email : {
         type: String,
@@ -33,8 +39,16 @@ const userSchema = new Schema ({
               ],
         required : true,
     },
+    // tokens : [{
+    //     token: {
+    //         type: String,
+    //         required: true
+    //     }
+    // }],
+    // },
+    // timestamps : true
 
-})
+});
 
 const User = mongoose.model("User", userSchema);
 

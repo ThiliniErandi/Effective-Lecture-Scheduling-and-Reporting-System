@@ -5,7 +5,7 @@ let Batch = require('../models/Batch');
 router.route("/add").post((req, res) => {
     const year       = req.body.year;
     const department_id = req.body.department_id;
-    const course_id  = req.body.course_id;
+    // const course_id  = req.body.course_id;
     const hod_id     = req.body.hod_id;
     const rep_id     = req.body.rep_id;
     //if we include a number data type => const age = Number(req.body.age)
@@ -13,7 +13,7 @@ router.route("/add").post((req, res) => {
     const newBatch = new Batch({
         year,
         department_id,
-        course_id,
+        // course_id,
         hod_id,
         rep_id
     })
@@ -38,12 +38,12 @@ router.route("/view").get((req, res)=>{
 //update batches
 router.route("/update/:batchId").put(async(req, res)=>{
     let batch_id = req.params.batchId;
-    const { year, department_id, course_id, hod_id, rep_id } = req.body; 
+    const { year, department_id, hod_id, rep_id } = req.body; 
 
     const updateBatch = {
         year, 
         department_id,
-        course_id, 
+        // course_id, 
         hod_id, 
         rep_id,
     }
@@ -59,8 +59,8 @@ router.route("/update/:batchId").put(async(req, res)=>{
 })
 
 //delete batches
-router.route("/delete/:batchId").delete(async(req,res) => {
-    let batch_id = req.params.batchId;
+router.route("/delete/:id").delete(async(req,res) => {
+    let batch_id = req.params.id;
     await Batch.findByIdAndDelete(batch_id)
     .then(()=> {
         res.status(200).send({status: "Batch deleted"});   

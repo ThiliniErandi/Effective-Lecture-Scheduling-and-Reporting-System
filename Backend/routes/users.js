@@ -76,7 +76,7 @@ router.route("/get/:userId").get(async(req, res)=> {
     .then((user) => {
         res.status(200).send({status: "User fetched", user });
     }).catch(()=> {
-        console.log(err.message);
+        // console.log(err.message);
         res.status(500).send({status: "Error with get user", error: err.message });
     })
 })

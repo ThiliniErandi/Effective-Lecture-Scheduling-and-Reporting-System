@@ -2,33 +2,11 @@
 This project is creating as my university mini project. 
 
 ------
-### Install following packages before run this project.
+### Packages and Dependencies that I have used for the backend
 
 * Node modules
 ```markdown
 npm install
-```
-* Fontawesome
-```markdown
- npm i --save @fortawesome/fontawesome-svg-core
- npm install --save @fortawesome/react-fontawesome
- npm install --save @fortawesome/free-brands-svg-icons
-```
-* Bootstrap
-```markdown
- npm install react-bootstrap bootstrap@5.1.3
-```
-* Formik
-```markdown
- npm install formik --save
-```
-* yup
-```markdown
- npm install yup --save
-```
-* toastify and mdb
-```markdown
- npm i react-toastify mdb-react-ui-kit
 ```
 * nodemon
 ```markdown
@@ -38,22 +16,23 @@ npm install
 ```markdown
  npm i express mongoose
 ```
-* axios
+* express file upload
 ```markdown
- npm i axios
+ npm i express-fileupload
 ```
-* full calender
+<!-- * full calender
 ```markdown
  npm install --save @fullcalendar/react @fullcalendar/daygrid
-```
-* tailwind css
+``` -->
+<!-- * tailwind css
 ```markdown
  npm install -D tailwindcss
-```
+``` -->
 
 
 
-   // "postcss": "^8.4.7",
+
+    // "postcss": "^8.4.7",
 
      "devDependencies": {
     "@tailwindcss/forms": "^0.5.0",
