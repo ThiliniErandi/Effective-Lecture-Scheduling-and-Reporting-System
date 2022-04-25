@@ -1,30 +1,40 @@
-import Header from '../components/Home/Header';
+import Header from '../components/home/Header';
 import Footer from '../components/Footer';
 import '../custom.css';
 import Navbar from '../components/Navbar';
-import DepartmentRow from '../components/Home/DepartmentRow';
+import DepartmentRow from '../components/home/DepartmentRow';
 import NoticeBoard from '../pages/noticeBoard/NoticeBoard';
+import { useCookies } from 'react-cookie'
+import { useEffect } from 'react';
+import verifyUser from '../helpers/authCheck';
+
 
 const Home = () => {
-    return (
-        <div className="home" style={{overflow:'hidden',backgroundColor:'#F5F5F5'}}>
+    const [cookies, removeCookie] = useCookies([]);
 
-            <Navbar/>
+    useEffect(() => {
+        verifyUser("home", cookies, removeCookie);
+    }, [cookies, removeCookie])
+
+    return (
+        <div className="home" style={{ overflow: 'hidden', backgroundColor: '#F5F5F5' }}>
+
+            <Navbar />
 
             <section className="home-header">
-                <Header/>
+                <Header />
             </section>
 
             <section className='home-content'>
-                <NoticeBoard/>
-                <DepartmentRow/>
+                <NoticeBoard />
+                <DepartmentRow />
             </section>
-            
+
             <section className='footer'>
-                    <Footer/>
+                <Footer />
             </section>
-      </div>
+        </div>
     );
-  }
- 
+}
+
 export default Home;
