@@ -18,13 +18,14 @@ const handdleErrors = (err) => {
         errors.email = "This Email is Already Registered!"
         return errors;
     }
-
-    if (err.message.includes("User validation failed")) {
-        Object.values(err.errors).forEach(({ properties }) => {
-            errors[properties.path] = properties.message;
-        })
+    if (err === "Incorrect Email!") {
+        errors.email = err
+    } else if (err === "Incorrect password!") {
+        errors.password = err
     }
 
+
+    return errors;
 }
 
 //create users
@@ -38,7 +39,7 @@ router.post('/add', async (req, res) => {
 
     } catch (err) {
         console.log(err)
-        const errors = handdleErrors(err)
+        const { errors } = handdleErrors(err)
         res.json({ errors, status: "Falid!" });
     }
 
@@ -52,13 +53,15 @@ router.post('/login', async (req, res) => {
 
     try {
         const new_user = await User.login(email, password)
-        const token = createToken(new_user._id, new_user.email)
-        res.cookie("jwt", token, {
-            withCrdentials: true,
-            httpOnly: false,
-            maxAge: 60 * 60 * 1000
-        })
-        res.send({ msg: "User Logged!", user: new_user })
+        if (new_user) {
+            const token = createToken(new_user._id, new_user.email)
+            res.cookie("jwt", token, {
+                withCrdentials: true,
+                httpOnly: false,
+                maxAge: 60 * 60 * 1000
+            })
+            res.send({ msg: "User Logged!", user: new_user })
+        }
 
     } catch (err) {
         console.log(err)
