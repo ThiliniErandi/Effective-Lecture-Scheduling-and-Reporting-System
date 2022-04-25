@@ -4,15 +4,23 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const fileUpload = require('express-fileupload');
-
+const cookieParser = require('cookie-parser')
 const app = express();
 const PORT = process.env.PORT || 8070;
 
 require("dotenv").config();
 
-app.use(cors());
-app.use(bodyParser.json());
+corsConfig = {
+    origin: true,
+    credentials: true,
+}
+app.use(cors(corsConfig));
+app.options('*', cors(corsConfig));
+app.use(cookieParser());
+app.use(express.json());
+
 app.use(fileUpload());
+
 
 const URL = process.env.MONGODB_URL;
 

@@ -1,43 +1,38 @@
 const mongoose = require('mongoose');
-// const bcrypt = require('bcryptjs');
-// const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema ({
-  
+const userSchema = new Schema({
+
     // user_id : {
     //     type : String,
     //     required : true
     // },
-    user_name : {
-        type : String,
+    user_name: {
+        type: String,
         unique: true,
-        required : true,
+        required: true,
         trim: true
     },
-    password : {
-        type : String,
-        required : true,
+    password: {
+        type: String,
+        required: true,
         trim: true,
         minilength: 8
     },
-    email : {
+    email: {
         type: String,
         unique: true,
         required: 'Email address is required',
         // validate: [validateEmail, 'Please fill a valid email address'],
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
-    user_type : {
-        type: [
-                "admin",
-                "dean",
-                "depHead",
-                "lecturer",
-                "student"
-              ],
-        required : true,
+    user_type: {
+        type: String,
+        enum: ['Admin', 'HOD', 'Dean', 'Lecturer', 'Student'],
+        default: "Student",
+        required: true,
     },
     // tokens : [{
     //     token: {
@@ -49,6 +44,24 @@ const userSchema = new Schema ({
     // timestamps : true
 
 });
+
+userSchema.pre('save', async function (next) {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt)
+    next();
+})
+
+userSchema.statics.login = async function (email, password) {
+    const user = await this.findOne({ email });
+    if (user) {
+        const auth = await bcrypt.compare(password, user.password)
+        if (auth) {
+            return user;
+        }
+        throw Error("Incorrect password!");
+    }
+    throw Error("Incorrect Email!")
+}
 
 const User = mongoose.model("User", userSchema);
 
