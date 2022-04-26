@@ -28,21 +28,19 @@ const Login = () => {
     onSubmit: values => {
       console.log(JSON.stringify(values, null, 2));
 
-      const { data } = axios.post("http://localhost:8070/users/login", values, {
+      axios.post("http://localhost:8070/users/login", values, {
         withCredentials: true
       })
         .then((res) => {
 
-          window.location = '/home';
-
-        }).catch((err) => {
-          if (data) {
-            if (data.errors) {
-              const { email, password } = data.errors;
-              if (email) genarateError(email)
-              else if (password) genarateError(password)
-            }
+          if (res.data.status !== 'Login Faild!') {
+            window.location = '/home';
+          } else {
+            toast.error("Email and Password not Matched!");
           }
+          console.log(res)
+        }).catch((err) => {
+
         })
 
     },

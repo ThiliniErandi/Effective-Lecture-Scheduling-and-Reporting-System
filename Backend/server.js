@@ -7,6 +7,7 @@ const fileUpload = require('express-fileupload');
 const cookieParser = require('cookie-parser')
 const app = express();
 const PORT = process.env.PORT || 8070;
+const { checkUser } = require("./routes/Authentication")
 
 require("dotenv").config();
 
@@ -36,6 +37,8 @@ const connection = mongoose.connection;
 connection.once("open", () => {
     console.log("Mongodb Connection Success!");
 })
+
+app.use("/home", checkUser)
 
 const userRouter = require('./routes/users.js')
 app.use("/users", userRouter);
@@ -67,7 +70,8 @@ app.use("/schedules", scheduleRouter);
 const timetableRouter = require('./routes/timetables.js')
 app.use("/timetables", timetableRouter);
 
-const chatRouter = require('./routes/chats.js')
+const chatRouter = require('./routes/chats.js');
+
 app.use("/chats", chatRouter);
 
 app.listen(PORT, () => {

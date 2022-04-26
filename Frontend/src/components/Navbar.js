@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useCookies } from 'react-cookie'
+import { useCookies } from 'react-cookie';
 import {
   MDBNavbar,
   MDBContainer,
@@ -30,7 +30,7 @@ import { Link } from 'react-router-dom';
 export default function App() {
   const [showNavRight, setShowNavRight] = useState(false);
   const [scrollableModal, setScrollableModal] = useState(false);
-  const [cookies, removeCookie] = useCookies([]);
+  const [cookies, removeCookie] = useCookies(["jwt"]);
   return (
     <MDBNavbar expand='lg' style={{ backgroundColor: '#1A4797', width: '100%' }}>
       <MDBContainer fluid style={{ height: '40px', paddingTop: '8px' }}>
@@ -198,7 +198,7 @@ export default function App() {
 
 
                     if (cookies.jwt) {
-                      removeCookie("jwt")
+                      removeCookie("jwt", { path: '/' });
                       window.location = '/';
                     } else {
 

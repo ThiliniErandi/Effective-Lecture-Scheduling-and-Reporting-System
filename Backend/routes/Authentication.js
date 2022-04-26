@@ -6,14 +6,15 @@ module.exports.checkUser = (req, res, next) => {
     const screte = process.env.SECRETE_KEY;
 
     if (!token) {
-        return res.status(403).send("A token is required for authentication");
+        return res.send("A token is required for authentication");
     }
 
     try {
         const decoded = jwt.verify(token, screte);
         req.user = decoded;
     } catch (err) {
-        return res.status(401).send("Invalid Token");
+
+        return res.send("Invalid Token");
     }
     return next();
 }
