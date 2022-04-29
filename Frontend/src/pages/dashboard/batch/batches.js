@@ -22,8 +22,6 @@ const Batches = () => {
 
     const [data, setData] = useState([]);
 
-    const objId = data.id;
-
     useEffect(() => {
         async function getData() {
             await axios
@@ -34,6 +32,9 @@ const Batches = () => {
                     setData(response.data);
                     // tell it that I had the result
                     setLoadingData(false);
+                })
+                .catch((error) => {
+                    console.log(error);
                 });
         }
         if (loadingData) {
@@ -42,12 +43,14 @@ const Batches = () => {
         }
     }, []);
 
-    const handleDelete = async(_id) => {
+    const handleDelete = async(id) => {
         if (window.confirm("Are you sure that you wanted to delete this batch?")) {
-            const response = await axios.delete('http://localhost:8070/batches/delete/+ ${data.id}');
+            const response = await axios.delete(`http://localhost:8070/batches/${id}`);
+            console.log('deleted');
             if (response.status === 200) {
                 toast.success("Batch deleted successfully");
                 console.log('deleted');
+                loadingData();
             } else {
                 toast.error("Something went wrong");
             }

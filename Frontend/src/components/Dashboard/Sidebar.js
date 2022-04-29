@@ -75,8 +75,9 @@ function Sidebar() {
             </ul>
         </nav>
 
-        </div>
+    </div>
+    
   )
-}
+};         
 
-export default Sidebar
+export default Sidebar;

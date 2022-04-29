@@ -13,8 +13,7 @@ module.exports.checkUser = (req, res, next) => {
         const decoded = jwt.verify(token, screte);
         req.user = decoded;
     } catch (err) {
-
-        return res.send("Invalid Token");
+        return res.json({ status: "404", msg: "Invalid Token" });
     }
     return next();
 }

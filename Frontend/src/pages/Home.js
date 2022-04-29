@@ -4,7 +4,7 @@ import '../custom.css';
 import Navbar from '../components/Navbar';
 import DepartmentRow from '../components/home/DepartmentRow';
 import NoticeBoard from '../pages/noticeBoard/NoticeBoard';
-import { useCookies } from 'react-cookie'
+import { useCookies } from 'react-cookie';
 import { useEffect } from 'react';
 import verifyUser from '../helpers/authCheck';
 

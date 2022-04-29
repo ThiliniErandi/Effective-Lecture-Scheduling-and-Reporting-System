@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { MDBBtn, MDBInput, MDBValidation } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -20,6 +20,7 @@ const AddEditLecturer = () => {
     // const [ typeErrMsg, setTypeErrorMsg ] = useState(null);
     const { lecturer_id, name, email, course_id, designation, user_id } = formValue;
     const [editMode, setEditMode] = useState(false);
+    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,9 +30,10 @@ const AddEditLecturer = () => {
         if(lecturer_id && name && email && course_id && designation && user_id  ) {
             if(!editMode) {
                 // const updatedUserData = { ...formValue };
-                const response = await axios.post("http://localhost:8070/lecturers/add");
-                if(response.status === 201 ) {
+                const response = await axios.post("http://localhost:8070/lecturers/add", formValue);
+                if(response.status === 200 ) {
                     toast.success("Lecturer added successfully");
+                    history.push('/lecturers');
                 }else{
                     toast.error("Something went wrong");
                 }
@@ -45,7 +47,6 @@ const AddEditLecturer = () => {
                 }
             }
             setFormValue({ lecturer_id: "", designation: "", name: "", email: "", course_id: "",  user_id: ""});
-            window.location = '/lecturers';
         }
     };
 

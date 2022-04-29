@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-   
     MDBIcon,
     MDBBtn
 } from 'mdb-react-ui-kit';

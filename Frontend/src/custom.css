@@ -105,6 +105,10 @@ h2 {
 }
 
 
+.welcome-text{
+    text-align: left !important;
+}
+
 /* Home Page */
 
 .layer-home {
@@ -133,8 +137,8 @@ h2 {
 .hero-right-img-home {
     padding-top: 0px;
     padding-right: 0px;
-    width: 430px;
-    height: 553px;
+    width: 420px;
+    height: 559px;
     float: right;
 }
 

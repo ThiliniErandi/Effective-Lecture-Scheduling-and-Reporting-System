@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { MDBBtn, MDBInput, MDBValidation } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -15,15 +15,17 @@ const AddEditDepartment = () => {
     const [formValue, setFormValue] = useState(initialState);
     const { dep_id, name } = formValue;
     const [editMode, setEditMode] = useState(false);
+     const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if( dep_id && name  ) {
             if(!editMode) {
                 // const updatedUserData = { ...formValue };
-                const response = await axios.post("http://localhost:8070/departments/add");
-                if(response.status === 201 ) {
+                const response = await axios.post("http://localhost:8070/departments/add", formValue);
+                if(response.status === 200 ) {
                     toast.success("Department added successfully");
+                    history.push('departments');
                 }else{
                     toast.error("Something went wrong");
                 }
@@ -37,7 +39,6 @@ const AddEditDepartment = () => {
                 }
             }
             setFormValue({ dep_id: "", name: "" });
-            window.location = '/departments';
         }
     };
 

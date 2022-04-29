@@ -2,18 +2,20 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from 'react-toastify';
 import {
-    MDBContainer,
-    MDBBtn,
-    MDBTable,
-    MDBTableBody,
-    MDBTableHead,
-} from 'mdb-react-ui-kit';
+        MDBContainer,
+        MDBBtn,
+        MDBTable,
+        MDBTableBody,
+        MDBTableHead,
+    } from 'mdb-react-ui-kit';
 import User from '../../../components/Dashboard/user/User';
 import Navbar from '../../../components/Navbar'
 import { Link } from 'react-router-dom';
 import Sidebar from '../../../components/Dashboard/Sidebar';
 import { Row } from 'react-bootstrap';
 import '../dashboard.css';
+import { useCookies } from 'react-cookie';
+import verifyUser from '../../../helpers/authCheck';
 
 const Users = () => {
 
@@ -21,11 +23,14 @@ const Users = () => {
     const [loadingData, setLoadingData] = useState(true);
     const [data, setData] = useState([]);
     // const [id, setId] = useState([]);
+    const [cookies, removeCookie] = useCookies([]);
 
     useEffect(() => {
         async function getData() {
+            verifyUser("users/view", cookies, removeCookie);
             await axios
-                .get("http://localhost:8070/users/view")
+                .post("http://localhost:8070/users/view", {}, {
+                    withCredentials: true })
                 .then((response) => {
                     // check if the data is populated
                     console.log(response.data);
@@ -38,7 +43,7 @@ const Users = () => {
             // axios call, if the result is not ready
             getData();
         }
-    }, []);
+    }, [cookies, removeCookie]);
 
     const handleDelete = async(id) => {
         if (window.confirm("Are you sure that you wanted to delete this user?")) {

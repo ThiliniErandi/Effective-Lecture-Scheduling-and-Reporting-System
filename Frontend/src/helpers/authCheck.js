@@ -1,18 +1,17 @@
-
 import axios from 'axios';
-
 
 const verifyUser = (path, cookies, removeCookie) => {
 
     if (!cookies.jwt) {
-        window.location = '/';
+        alert("Invalid login");
+        window.history.back()
     } else {
         axios.post(`http://localhost:8070/${path}`, {}, {
             withCredentials: true
         }).then((res) => {
-            if (res.status === 200) {
+            if (res.data.status === 404) {
                 removeCookie("jwt", { path: '/' });
-                window.location = '/';
+                window.location = '*';
             }
         })
     }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { MDBBtn, MDBInput, MDBValidation } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -21,6 +21,7 @@ const AddEditRepresentative = () => {
     // const [ typeErrMsg, setTypeErrorMsg ] = useState(null);
     const { rep_id, name, email, dep_id, batch_id, course_id, user_id } = formValue;
     const [editMode, setEditMode] = useState(false);
+    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,23 +31,23 @@ const AddEditRepresentative = () => {
         if(rep_id && name && email && dep_id && batch_id && course_id && user_id  ) {
             if(!editMode) {
                 // const updatedUserData = { ...formValue };
-                const response = await axios.post("http://localhost:8070/studentBatchRepresentatives/add");
-                if(response.status === 201 ) {
-                    toast.success("Representative added successfully");
+                const response = await axios.post("http://localhost:8070/reps/add", formValue);
+                if(response.status === 200 ) {
+                    toast.success("Student Representative added successfully");
+                    history.push('/representatives');
                 }else{
                     toast.error("Something went wrong");
                 }
             }else {
                 const response = await axios
                 .put(`http://localhost:8070/studentBatchRepresentatives/update/${id}`, formValue);
-                if(response.status === 201 ) {
+                if(response.status === 200 ) {
                     toast.success("Representative updated successfully");
                 }else{
                     toast.error("Something went wrong");
                 }
             }
             setFormValue({ rep_id: "", name: "", email: "", dep_id: "", batch_id: "", course_id: "",  user_id: ""});
-            window.location = '/representatives';
         }
     };
 

@@ -39,14 +39,13 @@ router.route("/view").get((req, res)=>{
 //update timetables
 router.route("/update/:timetableId").put(async(req, res)=>{
     let timetable_Id = req.params.timetableId;
-    const { timetable_id, name, type, lecturer_id, batch_id, rep_id } = req.body; 
+    const { timetable_id, name, batch_id, lecturer_id, rep_id } = req.body; 
 
     const updateTimetable = {
         timetable_id, 
         name,
-        type, 
-        lecturer_id,
         batch_id,
+        lecturer_id,
         rep_id
     }
 

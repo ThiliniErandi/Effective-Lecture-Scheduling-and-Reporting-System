@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { MDBBtn, MDBInput, MDBValidation } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -18,6 +18,7 @@ const AddEditUser = () => {
     const [typeErrMsg, setTypeErrorMsg] = useState(null);
     const { user_name, password, user_type, email } = formValue;
     const [editMode, setEditMode] = useState(false);
+    const history = useHistory();
 
     const genarateError = (err) => toast.error(err, {
         position: "top-right"
@@ -57,7 +58,7 @@ const AddEditUser = () => {
                 }
             }
 
-            window.location = '/users';
+            history.push('/users');
             setFormValue({ user_name: "", password: "", email: "", user_type: "" });
         }
     };

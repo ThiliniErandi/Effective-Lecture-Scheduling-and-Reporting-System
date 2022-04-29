@@ -5,12 +5,12 @@ let Notice = require('../models/Notice');
 router.route("/add").post((req, res) => {
     const title = req.body.title;
     const description = req.body.description;
-    // const titleImg = req.files.titleImg;
+    const file = req.files.file;
 
     const newNotice = new Notice({
         title,
         description,
-        // titleImg
+        file
     })
 
     //passing data to the db
@@ -27,15 +27,15 @@ router.route("/upload").post((req, res) => {
         return res.status(400).json({ msg: 'No file uploaded' });
     }
 
-    const titleImg = req.files.titleImg;
+    const file = req.files.file;
 
-    titleImg.mv(`${__dirname}/../../frontend/public/assets/images/uploads/${titleImg.name}`, err => {
+    file.mv(`${__dirname}/../../frontend/public/assets/images/uploads/${file.name}`, err => {
         if (err) {
         console.error(err);
         return res.status(500).send(err);
         }
 
-        res.json({ fileName: titleImg.name, filePath: `/uploads/${titleImg.name}` });
+        res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
     });
 });
 
@@ -91,7 +91,7 @@ router.route("/get/:noticeId").get(async(req, res)=> {
         res.status(200).send({status: "Notice fetched", notice });
     }).catch(()=> {
         // console.log(err.message);
-        res.status(500).send({status: "Error with get notice", error: err.message });
+        // res.status(500).send({status: "Error with get notice", error: err.message });
     })
 })
 

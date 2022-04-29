@@ -6,15 +6,15 @@ import {
 } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 
-const batch = ({ year, department, course_id, hod_id, rep_id, handleDelete, id }) => {
+const batch = ({ year, department, hod, rep, handleDelete, _id }) => {
     return <>
        
         <tr>
           <td>{ year }</td>
           <td>{ department }</td>
           {/* <td>{ course_id }</td> */}
-          <td>{ hod_id }</td>
-          <td>{ rep_id }</td>
+          <td>{ hod }</td>
+          <td>{ rep }</td>
           <td>
             <Link to = { `/addEditBatch` }> 
                 <MDBIcon
@@ -27,7 +27,7 @@ const batch = ({ year, department, course_id, hod_id, rep_id, handleDelete, id }
                 className = 'mt-1'
                 tag = 'a'
                 color = 'none'
-                onClick = {() => handleDelete(id)} >
+                onClick = {() => handleDelete(_id)} >
                 <MDBIcon
                     fas
                     icon = 'trash'
