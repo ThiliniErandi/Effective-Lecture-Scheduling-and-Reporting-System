@@ -5,7 +5,7 @@ Target outcomes are convenient lecture planning, maintaining good communication 
 
 In here I used MERN stack technologies collection that enables faster application development.
 
-# Packages and libraries that used
+## Packages and libraries that used
 
 * Authentication
 ```markdown
