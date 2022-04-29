@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { MDBBtn, MDBInput, MDBValidation } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Navbar from '../../../components/Navbar';
+import Footer from '../../../components/Footer';
 
 const initialState = {
     year: '',
     department: '',
     // course_id: '',
-    hod_id: '',
-    rep_id: ''
+    hod: '',
+    rep: ''
 }
 
 const AddEditBatch = () => {
@@ -18,8 +19,9 @@ const AddEditBatch = () => {
     const [formValue, setFormValue] = useState(initialState);
     const [ yearErrMsg, setYearErrorMsg ] = useState(null);
     const [ depErrMsg, setDepErrorMsg ] = useState(null);
-    const { year, department, hod_id, rep_id } = formValue;
+    const { year, department, hod, rep } = formValue;
     const [editMode, setEditMode] = useState(false);
+    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,26 +31,26 @@ const AddEditBatch = () => {
         if(!department) {
             setDepErrorMsg("Please Select the Department")
         }
-        if(year && department && hod_id && rep_id  ) {
+        if(year && department && hod && rep  ) {
             if(!editMode) {
                 // const updatedUserData = { ...formValue };
-                const response = await axios.post("http://localhost:8070/batches/add");
-                if(response.status === 201 ) {
+                const response = await axios.post("http://localhost:8070/batches/add", formValue);
+                if(response.status === 200 ) {
                     toast.success("Batch added successfully");
+                    history.push('/batches');
                 }else{
                     toast.error("Something went wrong");
                 }
             }else {
                 const response = await axios
                 .put(`http://localhost:8070/batches/update/${id}`, formValue);
-                if(response.status === 201 ) {
+                if(response.status === 200 ) {
                     toast.success("Batch updated successfully");
                 }else{
                     toast.error("Something went wrong");
                 }
             }
-            setFormValue({ year: "", department: "", hod_id: "", rep_id: ""});
-            window.location = '/batches';
+            setFormValue({ year: "", department: "", hod: "", rep: ""});
         }
     };
 
@@ -175,8 +177,8 @@ const AddEditBatch = () => {
                         )} */}
 
                 <MDBInput 
-                    value={hod_id || ""}
-                    name="hod_id"
+                    value={hod || ""}
+                    name="hod"
                     label='Head of the Department'
                     type="text"
                     onChange={onInputChange}
@@ -186,8 +188,8 @@ const AddEditBatch = () => {
                 <br />
 
                 <MDBInput 
-                    value={rep_id || ""}
-                    name="rep_id"
+                    value={rep || ""}
+                    name="rep"
                     label='Student Batch Representative'
                     type="text"
                     onChange={onInputChange}
@@ -208,7 +210,9 @@ const AddEditBatch = () => {
                     </MDBBtn>
                 </Link>
             </div>
-        </MDBValidation></>
+        </MDBValidation>
+        <Footer/>
+        </>
     )
 }
 

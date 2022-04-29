@@ -15,7 +15,7 @@ import {
 import { Link } from 'react-router-dom';
 // import Badge from './Badge'
 
-const timetableComponent = ({ timetable_id, name, handleDelete, id }) => {
+const timetableComponent = ({ timetable_id, name, batch_id, lecturer_id, rep_id, handleDelete, _id }) => {
         return ( 
         < MDBCol size = '4'
             style = {{ paddingBottom: '20px' } } >
@@ -40,14 +40,14 @@ const timetableComponent = ({ timetable_id, name, handleDelete, id }) => {
                             <MDBBtn className = 'mt-1'
                                     tag = 'a'
                                     color = 'none'
-                                    onClick = {() => handleDelete(id)} 
+                                    onClick = {() => handleDelete(_id)} 
                                 >
                                 <MDBIcon fas icon = 'trash'
                                         style = {{ color: '#dd4e39' }}
                                         size = 'lg'/>
                             </MDBBtn>  
 
-                            <Link to = { `/addEditNotice/${id}` } >
+                            <Link to = { `/addEditNotice/${_id}` } >
                                 <MDBIcon fas icon = 'edit'
                                     style = {{ color: '#75acee', marginLeft:'10px' }}
                                     size = 'lg'/>

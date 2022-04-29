@@ -4,18 +4,18 @@ let Batch = require('../models/Batch');
 //create batches
 router.route("/add").post((req, res) => {
     const year       = req.body.year;
-    const department_id = req.body.department_id;
+    const department = req.body.department;
     // const course_id  = req.body.course_id;
-    const hod_id     = req.body.hod_id;
-    const rep_id     = req.body.rep_id;
+    const hod    = req.body.hod;
+    const rep     = req.body.rep;
     //if we include a number data type => const age = Number(req.body.age)
      
     const newBatch = new Batch({
         year,
-        department_id,
+        department,
         // course_id,
-        hod_id,
-        rep_id
+        hod,
+        rep
     })
 
     //passing data to the db

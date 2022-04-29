@@ -13,7 +13,7 @@ export default function SocialMediaIcons() {
             icon = { faTwitterSquare }
         /> 
         <FontAwesomeIcon
-            href = ""
+            href = "https://www.facebook.com/FAS.SUSL.OFFICIAL"
             className = 'social-icon'
             style = {{ padding: '10px', cursor: 'pointer' }}
             icon = { faFacebookSquare }

@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { MDBBtn, MDBInput, MDBValidation } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 
 const initialState = {
     title: '',
     description: '',
-    // checkbox: '',
-    // imageUrl: ''
 }
-
-// const stuBatches = [
-//     { key:'1', value: 'First'},
-//     { key:'2', value: 'Second'},
-//     { key:'3', value: 'Third'},
-//     { key:'4', value: 'Fourth'}
-// ]
 
 const AddEditNotice = () => {
 
     const [formValue, setFormValue] = useState(initialState);
-    // const [ checkboxErrMsg, setcheckboxErrorMsg ] = useState(null);
     const [editMode, setEditMode] = useState(false);
-    const { title, description } = formValue;
+    const { title, description} = formValue;
+    const history = useHistory();
+    const [file, setFile] = useState('');
+    const [fileName, setFileName] = useState('Choose Image');
+    const[uploadedFile, setUploadedFile] = useState({});
+
+    // this.setState({file})
 
     // const getDate = () => {
     //     let today = new Date();
@@ -39,71 +36,100 @@ const AddEditNotice = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // const imageValidation = !editMode ? imageUrl : true;
-        if(title && description ) {
+     
+        if(title && description && file ) {
              // const currentDate = getDate();
             if(!editMode) {
-                // const updatedNoticeData = { ...formValue, date: currentDate };
+                
+                // const updatedNoticeData = { ...formValue };
                 const response = await axios
-                .post("http://localhost:8070/notices/add" );
-                if(response.status === 201 ) {
-                    toast.success("Notice added successfully");
-                }else{
+                    .post("http://localhost:8070/notices/add", formValue );
+                if(response.status === 200 ) {
+                    toast.success("Notice created successfully");
+                    history.push('/home');
+                } else{
                     toast.error("Something went wrong");
                 }
-            } else {
-                const response = await axios
-                .put(`http://localhost:8070/notices/update/${id}`, formValue);
-                if(response.status === 201 ) {
-                    toast.success("Notice updated successfully");
-                }else{
-                    toast.error("Something went wrong");
-                }
-            }
-            setFormValue({ title: "", description: "" });
-            window.location = '/notices';
+            } 
+            // else {
+            //     const response = await axios
+            //     .put(`http://localhost:8070/notices/update/${id}`, formValue);
+            //     if(response.status === 200 ) {
+            //         toast.success("Notice updated successfully");
+            //     }else{
+            //         toast.error("Something went wrong");
+            //     }
+            // }
+            setFormValue({ title: "", description: "", file: ""});
         }
     };
 
-    const onInputChange = (e) => {
-        let { name, value } = e.target;
-        setFormValue({ ...formValue, [name]: value });
-    };
+      // 
+    //
+    // formData.append("upload_preset", "")
+    // axios
+    //     .post("http://localhost:8070/notices/upload", formData)
+    //     .then((res) => {
+    //        console.log("Response", res);
+    //        toast.info("Image uploaded successfully");
+    //        setFormValue({ ...formValue }); 
+    // })
+    //     .catch((err)=> {
+    //         toast.error("Something went wrong");
+    //     });
 
-    // const onUploadImage = (file) => {
-    //     console.log("file", file);
-    //     const formData = new FormData();
-    //     formData.append("file", file);
-    //     formData.append("upload_preset", "")
-    //     axios
-    //         .post("http://localhost:8070/notices/image/upload", formData)
-    //         .then((res) => {
-    //            toast.info("Image uploaded successfully");
-    //            setFormValue({ ...formValue }); 
-    //     })
-    //         .catch((err)=> {
-    //             toast.err("SOmething went wrong");
-    //         });
-        
-    // };
-
-    const {id} = useParams();
+    const {_id} = useParams();
 
     useEffect(() => {
-        if(id) {
+        if(_id) {
             setEditMode(true);
-            getSingleNotice(id)
+            getSingleNotice(_id);
         }else {
             setEditMode(false);
             setFormValue({ ...initialState});
         }
-    }, [id]);
+    }, [_id]);
 
-    const getSingleNotice = async (id) => {
-        const singleNotice = await axios.get(`http://localhost:8070/notices/${id}`)
+    const getSingleNotice = async (_id) => {
+        const singleNotice = await axios.get(`http://localhost:8070/notices/get/${_id}`);
         if(singleNotice.status === 200) {
             setFormValue({ ...singleNotice.data});
         }else {
             toast.error("Something went wrong");
+        }
+    }
+
+    const onInputChange = (e) => {
+        
+        let { name, value } = e.target;
+        setFormValue({ ...formValue, [name]: value }) ;
+    };
+
+    const onUploadImage = async (e) => {
+ 
+        setFile(e.target.files[0]);
+        setFileName(e.target.files[0].name);
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+            const res = await axios
+                .post('http://localhost:8070/notices/upload', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+            });
+
+            const  { fileName, filepath } = res.data;
+            setUploadedFile({ fileName, filepath });
+
+        } catch(err) {
+            if(err.status === 500 ) {
+                toast.error("Something went wrong");
+            } else {
+                toast.success("Image uploaded successfully");
+            }
         }
     }
 
@@ -123,27 +149,14 @@ const AddEditNotice = () => {
 
             <div style={{ margin: 'auto', padding: "15px", maxWidth: "400px", alignContent: "center" }}>
 
-                {
-                    /* <MDBInput
-                                        label='Notice_Id'
-                                        id="Notice_id"
-                                        name="id"
-                                        type="text"
-                                        style={{ display:'block', paddingRight:'333px', marginBottom:'20px', paddingBottom:'8px' }}
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        value={formik.values.id}
-                                        disabled
-                                    /> */
-                }
-
                 <MDBInput 
                     value={title || ""}
                     name="title"
                     label='Title'
                     type="text"
                     onChange={onInputChange}
-                    required validation='Please provide a title'
+                    required 
+                    validation='Please provide a title'
                     invalid />
 
                 <br />
@@ -155,57 +168,27 @@ const AddEditNotice = () => {
                     type="text"
                     textarea rows={6}
                     onChange={onInputChange}
-                    required validation='Please provide a description'
+                    required 
+                    validation='Please provide a description'
                     invalid />
 
                 <br />
-
-                {/* { !editMode && (
-                    <>
+{/* 
+                { !editMode && (
+                    <> */}
                      <MDBInput 
                         type='file'
-                        onChange={(e) => onUploadImage(e.target.files)}
-                        required validation='Please provide a description'
+                        onChange={onUploadImage}
+                        required 
+                        validation='Please provide a suitable image'
                         invalid />
-                    </>
-                )}
-                
-                <br /> */}
-
-                {/* <div style={{display: 'inline'}}>
-
-                    <p style={{display: 'inline', marginRight:'18px'}}>Student Batch/Baches:</p>
-
-                    <input type="checkbox"
-                        name="stu_batch"
-                        value="First"
-                        style={{display: 'inline', marginRight:'5px'}}
-                        onclick="return ValidatePetSelection();" /> 1 
-
-                    <input type="checkbox"
-                        name="stu_batch"
-                        value="Second"
-                        style={{display: 'inline', marginRight:'5px', marginLeft: '30px'}}
-                        onclick="return ValidatePetSelection();" /> 2 
-
-                    <input type="checkbox"
-                        name="stu_batch"
-                        value="Third"
-                        style={{display: 'inline', marginRight:'5px', marginLeft: '30px'}}
-                        onclick="return ValidatePetSelection();" /> 3 
-
-                    <input type="checkbox"
-                        name="stu_batch"
-                        value="Fourth"
-                        style={{display: 'inline', marginRight:'5px', marginLeft: '30px'}}
-                        onclick="return ValidatePetSelection();" /> 4
-                </div> */}
-               
+                    {/* </>
+                )} */}
 
                 <br />
                 <br />
 
-                <MDBBtn className='formBtn'
+                <MDBBtn
                     type='submit'
                     style={{ marginLeft: '50px', paddingInline: '40px', fontSize: '15PX', marginTop: '30px', marginRight:'20px'}}
                 >{ editMode ? "Update" : "Add"}
@@ -217,7 +200,9 @@ const AddEditNotice = () => {
                     </MDBBtn>
                 </Link>
             </div>
-        </MDBValidation></>
+        </MDBValidation>
+        <Footer/>
+        </>
     )
 }
 

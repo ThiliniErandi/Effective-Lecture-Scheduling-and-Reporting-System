@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { MDBBtn, MDBInput, MDBValidation } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -15,15 +15,17 @@ const AddEditCourse = () => {
     const [formValue, setFormValue] = useState(initialState);
     const { course_id, name } = formValue;
     const [editMode, setEditMode] = useState(false);
+    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if( course_id && name  ) {
             if(!editMode) {
                 // const updatedUserData = { ...formValue };
-                const response = await axios.post("http://localhost:8070/courses/add");
-                if(response.status === 201 ) {
+                const response = await axios.post("http://localhost:8070/courses/add", formValue);
+                if(response.status === 200 ) {
                     toast.success("Course added successfully");
+                    history.push('/courses');
                 }else{
                     toast.error("Something went wrong");
                 }
@@ -37,7 +39,6 @@ const AddEditCourse = () => {
                 }
             }
             setFormValue({ course_id: "", name: "" });
-            window.location = '/courses';
         }
     };
 

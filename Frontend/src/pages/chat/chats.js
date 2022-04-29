@@ -1,18 +1,24 @@
-import React, { useEffect, useState } from "react";
-// import "./App.css";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Loader from "../../components/Chat/Loader";
 import Sidebar from "../../components/Chat/Sidebar";
 import Chat from "./Chat";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-// import ChatHome from "./Home";
+import { useCookies } from 'react-cookie';
+import verifyUser from '../../helpers/authCheck';
 
 const userPrefersDark =
 	window.matchMedia &&
 	window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 const Chats = () => {
+
+	const [cookies, removeCookie] = useCookies([]);
+
+    useEffect(() => {
+        verifyUser("home", cookies, removeCookie);
+    }, [cookies, removeCookie])
+
 	// const [appLoaded, setAppLoaded] = useState(false);
 	// const [startLoadProgress, setStartLoadProgress] = useState(false);
 

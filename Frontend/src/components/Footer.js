@@ -5,9 +5,9 @@ import { faHome, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 export default function Footer() {
     return (
         <div className = "font-small "
-             style = {{ color: 'white', position:'relative', marginTop:'100px'  } } >
+             style = {{ color: 'white', position:'relative'  } } >
             <Container fluid className = "text-center text-md-left "
-                       style = {{ backgroundColor: '#3B3B3B', paddingTop: '40px' } } >
+                       style = {{ backgroundColor: '#2C3333', paddingTop: '40px' } } >
                 <Row className = "w-100"
                      style = {{ paddingLeft: '20px', height: '250px', fontFamily: 'Verdana',  } } >
                     <Col md = "6" style={{ textAlign: 'left'}} >

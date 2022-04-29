@@ -13,10 +13,10 @@ const noticeSchema = new Schema ({
         type : String,
         required : true
     },
-    // titleImg : {
-    //     type : String,
-    //     required : true
-    // } 
+    file : {
+        type : Object,
+        required : true
+    } 
 
 })
 

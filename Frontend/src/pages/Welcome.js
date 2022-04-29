@@ -17,7 +17,7 @@ const Welcome = () => {
                 </div>
                 <div className="hero-welcome">
                     <h2>WELCOME</h2>
-                    <h3>Academic Year 2022</h3>
+                    <h3>Academic Year 2020/2021</h3>
                     <h3>Faculty of Applied Sciences</h3>
                     <h3>Sabaragamuwa University of Sri Lanka</h3>
                 </div>

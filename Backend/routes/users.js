@@ -66,17 +66,16 @@ router.post('/login', async (req, res) => {
     } catch (err) {
         console.log(err)
         const errors = handdleErrors(err)
-        res.send({ errors, status: "Login Faild!" });
+        res.send({ errors, status: "Login Failed!" });
     }
 
 })
 
 
 //view users
-router.get("/view", checkUser, (req, res) => {
+router.post("/view", checkUser, (req, res) => {
     User.find().then((users) => {
         res.json(users)
-
 
     }).catch((err) => {
         console.log(err)

@@ -7,7 +7,7 @@
 .input-feedback {
   color: rgb(243, 13, 13) ;
   margin-top: -10px;
-  margin-left: 5px;
+  text-align: left;
   font-size: 14px;
   margin-bottom: 5px;
   font-weight: 450;
@@ -53,5 +53,5 @@
   font-size: 14px;
   margin-bottom: 15px;
   font-weight: 450;
-  margin-left: 10px;
+  margin-left: 0px;
 }

@@ -49,8 +49,8 @@ app.use("/hods", hodRouter);
 const lecturerRouter = require('./routes/lecturers.js')
 app.use("/lecturers", lecturerRouter);
 
-const stu_batch_repRouter = require('./routes/studentBatchRepresentatives.js')
-app.use("/representatives", stu_batch_repRouter);
+const stu_batch_repRouter = require('./routes/reps.js')
+app.use("/reps", stu_batch_repRouter);
 
 const batchrouter = require('./routes/batches.js')
 app.use("/batches", batchrouter);
@@ -73,6 +73,7 @@ app.use("/timetables", timetableRouter);
 const chatRouter = require('./routes/chats.js');
 
 app.use("/chats", chatRouter);
+
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on port number: ${PORT}`)

@@ -20,11 +20,11 @@ const batchSchema = new Schema({
     //     type: String,
     //     required: true
     // },
-    hod_id: {
+    hod: {
         type: String,
         required: true
     },
-    rep_id: {
+    rep: {
         type: String,
         required: true
     },

@@ -3,8 +3,10 @@ import { MDBBtn, MDBInput, MDBValidation } from 'mdb-react-ui-kit';
 import PDF from './PdfView';
 import './report.css';
 import Navbar from '../../components/Navbar';
+import { Link } from 'react-router-dom';
 
 class Report extends Component {
+
     state = {
         name: '',
         description: '',
@@ -66,10 +68,19 @@ class Report extends Component {
                     <br/>
 
                     <MDBBtn className = 'formBtn'
-                    type = 'button'
-                    onClick = { this.submitReport }
-                    style = {{ marginLeft: '20px', paddingInline: '40px', fontSize: '15PX', marginTop: '30px', marginRight: '40px' } } >
-                    Create </MDBBtn> 
+                        type = 'button'
+                        onClick = { this.submitReport }
+                        style = {{ marginLeft: '20px', paddingInline: '40px', fontSize: '15PX', marginTop: '30px', marginRight: '40px' } } >
+                        Create 
+                    </MDBBtn> 
+                    <Link to='/home'>
+                        <MDBBtn className = 'formBtn'
+                            type = 'button'
+                            color='dark'
+                            style = {{ marginLeft: '20px', paddingInline: '40px', fontSize: '15PX', marginTop: '30px', marginRight: '40px' } } >
+                            Go Back 
+                        </MDBBtn> 
+                    </Link>
                     {
                         /* <Link to='/home'>
                                                     <MDBBtn color='dark'

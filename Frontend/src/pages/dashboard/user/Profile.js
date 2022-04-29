@@ -3,9 +3,17 @@ import { MDBCol, MDBRow, MDBInput, MDBBtn, MDBContainer } from 'mdb-react-ui-kit
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../../../components/Navbar';
-import Footer from '../../../components/Footer'
+import Footer from '../../../components/Footer';
+import verifyUser from '../../../helpers/authCheck';
+import { useCookies } from 'react-cookie';
 
 const Profile = ({ user_name, password, email, user_type, id, new_pwd, confirm_pwd }) => {
+
+    const [cookies, removeCookie] = useCookies([]);
+
+    useEffect(() => {
+        verifyUser("home", cookies, removeCookie);
+    }, [cookies, removeCookie])
 
     const [data, setData] = useState([]);
     const [loadingData, setLoadingData] = useState(true);

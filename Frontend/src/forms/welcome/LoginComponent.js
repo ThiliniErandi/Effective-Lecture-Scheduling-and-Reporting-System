@@ -17,8 +17,6 @@ const Login = () => {
       // rememberPassword: false,
     },
 
-
-
     validationSchema: Yup.object({
       email: Yup.string('Invalid Username').required().email(),
       password: Yup.string('Does not match with the username').required(),
