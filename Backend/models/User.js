@@ -51,6 +51,15 @@ userSchema.pre('save', async function (next) {
     next();
 })
 
+userSchema.pre('findOneAndUpdate', async function (next) {
+    const userToUpdate = await this.model.findOne(this.getQuery())
+
+    if (userToUpdate.password !== this._update.password) {
+        this._update.password = await bcrypt.hash(this._update.password, 12)
+    }
+    next();
+})
+
 userSchema.statics.login = async function (email, password) {
     const user = await this.findOne({ email });
     if (user) {
