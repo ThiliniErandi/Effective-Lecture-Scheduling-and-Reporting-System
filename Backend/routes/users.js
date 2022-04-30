@@ -95,8 +95,10 @@ router.put("/update/:userId", async (req, res) => {
         email
     }
 
-    const update = await User.findByIdAndUpdate(user_id, updateUser)
-        .then(() => {
+    const update = await User.findOneAndUpdate({ _id: user_id }, updateUser)
+
+        .then((data) => {
+            console.log(data)
             res.status(200).send({ status: "user updated" })
         }).catch((err) => {
             console.log(err);
@@ -117,7 +119,7 @@ router.delete("/delete/:userId", async (req, res) => {
 })
 
 //one user details view
-router.get("/get/:userId", async (req, res) => {
+router.post("/get/:userId", async (req, res) => {
     let user_id = req.params.userId;
     // await User.findOne(title)
     const user = await User.findById(user_id)

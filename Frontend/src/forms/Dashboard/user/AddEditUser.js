@@ -14,6 +14,19 @@ const initialState = {
 
 const AddEditUser = () => {
 
+    const { id } = useParams();
+
+
+    useEffect(() => {
+        if (id) {
+            setEditMode(true);
+            getSingleUser(id)
+        } else {
+            setEditMode(false);
+            setFormValue({ ...initialState });
+        }
+    }, [id]);
+
     const [formValue, setFormValue] = useState(initialState);
     const [typeErrMsg, setTypeErrorMsg] = useState(null);
     const { user_name, password, user_type, email } = formValue;
@@ -50,8 +63,10 @@ const AddEditUser = () => {
                 }
             } else {
                 const response = await axios
-                    .put("http://localhost:8070/users/update/6207c99611e120e162e87354", formValue);
-                if (response.status === 201) {
+                    .put(`http://localhost:8070/users/update/${id}`, formValue, {
+                        withCredentials: true
+                    });
+                if (response.status === 200) {
                     toast.success("User updated successfully");
                 } else {
                     toast.error("Something went wrong");
@@ -75,22 +90,14 @@ const AddEditUser = () => {
         setFormValue({ ...formValue, user_type: e.target.value });
     };
 
-    const { id } = useParams();
-
-    useEffect(() => {
-        if (id) {
-            setEditMode(true);
-            getSingleUser(id)
-        } else {
-            setEditMode(false);
-            setFormValue({ ...initialState });
-        }
-    }, [id]);
-
     const getSingleUser = async (id) => {
-        const singleUser = await axios.get(`http://localhost:8070/users/${id}`)
+        const singleUser = await axios.post(`http://localhost:8070/users/get/${id}`, {
+            withCredentials: true,
+        })
+
         if (singleUser.status === 200) {
-            setFormValue({ ...singleUser.data });
+            setFormValue({ ...singleUser.data.user });
+            console.log(singleUser);
         } else {
             toast.error("Something went wrong");
         }
@@ -113,13 +120,7 @@ const AddEditUser = () => {
 
     // };
 
-    // const {id} = useParams();
 
-    // useEffect(() => {
-
-    // })
-
-    //   
 
 
     return (<>
@@ -209,6 +210,7 @@ const AddEditUser = () => {
                 <br />
 
                 <MDBBtn className='formBtn'
+
                     type='submit'
                     style={{ marginLeft: '50px', paddingInline: '40px', fontSize: '15PX', marginTop: '30px', marginRight: '20px' }}
                 >{editMode ? "Update" : "Add"}
