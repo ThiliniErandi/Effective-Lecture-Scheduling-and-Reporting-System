@@ -61,13 +61,13 @@ router.route("/delete/:departmentId").delete(async(req,res) => {
 })
 
 //one department details view
-router.route("/get/:depId").get(async(req, res)=> {
+router.route("/get/:depId").post(async(req, res)=> {
     let dep_id = req.params.depId;
     // await Department.findOne(title)
     const dep = await Department.findById(dep_id)
     .then((department) => {
         res.status(200).send({status: "Notice fetched", department });
-    }).catch(()=> {
+    }).catch((err)=> {
         console.log(err.message);
         res.status(500).send({status: "Error with get department", error: err.message });
     })

@@ -5,7 +5,7 @@ import {
 } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 
-const Representative = ({ rep_id, name, email, dep_id, batch_id, course_id, user_id, handleDelete, id }) => {
+const Representative = ({ rep_id, name, email, dep_id, batch_id, course_id, user_id, handleDelete, _id }) => {
     return <>
        
         <tr>
@@ -17,7 +17,7 @@ const Representative = ({ rep_id, name, email, dep_id, batch_id, course_id, user
           <td>{ course_id }</td>
           <td>{ user_id }</td>
           <td>
-            <Link to = { `/addEditRepresentatives` }> 
+            <Link to = { `/addEditRepresentatives/${_id}` }> 
                 <MDBIcon
                     fas
                     icon = 'edit'
@@ -28,7 +28,7 @@ const Representative = ({ rep_id, name, email, dep_id, batch_id, course_id, user
                 className = 'mt-1'
                 tag = 'a'
                 color = 'none'
-                onClick = {() => handleDelete(id)} >
+                onClick = {() => handleDelete(_id)} >
                 <MDBIcon
                     fas
                     icon = 'trash'

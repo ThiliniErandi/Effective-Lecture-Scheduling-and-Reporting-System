@@ -5,7 +5,7 @@ import {
 } from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 
-const user = ({ user_name, password, user_type, email, handleDelete, id }) => {
+const user = ({ user_name, password, user_type, email, handleDelete, _id }) => {
     return <>
        
         <tr>
@@ -14,7 +14,7 @@ const user = ({ user_name, password, user_type, email, handleDelete, id }) => {
           <td>{ user_type }</td>
           <td>{ email }</td>
           <td>
-            <Link to = { `/addEditUser` }> 
+            <Link to = { `/addEditUser/${_id}` }> 
                 <MDBIcon
                     fas
                     icon = 'edit'
@@ -25,7 +25,7 @@ const user = ({ user_name, password, user_type, email, handleDelete, id }) => {
                 className = 'mt-1'
                 tag = 'a'
                 color = 'none'
-                onClick = {() => handleDelete(id)} >
+                onClick = {() => handleDelete(_id)} >
                 <MDBIcon
                     fas
                     icon = 'trash'

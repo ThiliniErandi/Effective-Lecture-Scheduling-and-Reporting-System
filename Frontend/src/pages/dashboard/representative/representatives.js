@@ -25,7 +25,7 @@ const Representatives = () => {
     useEffect(() => {
         async function getData() {
             await axios
-                .get("http://localhost:8070/representatives/view")
+                .get("http://localhost:8070/reps/view")
                 .then((response) => {
                     // check if the data is populated
                     console.log(response.data);
@@ -42,7 +42,7 @@ const Representatives = () => {
 
     const handleDelete = async(id) => {
         if (window.confirm("Are you sure that you wanted to delete this representative?")) {
-            const response = await axios.delete(`http://localhost:8070/studentBatchRepresentatives/delete/${id}`);
+            const response = await axios.delete(`http://localhost:8070/reps/delete/${id}`);
             if (response.status === 200) {
                 toast.success("Student Representative deleted successfully");
                 loadingData();

@@ -91,6 +91,7 @@ const AddEditUser = () => {
         const singleUser = await axios.get(`http://localhost:8070/users/${id}`)
         if (singleUser.status === 200) {
             setFormValue({ ...singleUser.data });
+            console.log(singleUser);
         } else {
             toast.error("Something went wrong");
         }

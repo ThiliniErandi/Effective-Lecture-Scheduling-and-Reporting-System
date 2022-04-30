@@ -75,7 +75,7 @@ router.route("/delete/:stu_batch_repId").delete(async(req,res) => {
 })
 
 //one student batch representative details view
-router.route("/get/:stu_batch_repId").get(async(req, res)=> {
+router.route("/get/:stu_batch_repId").post(async(req, res)=> {
     let stu_batch_rep_id = req.params.stu_batch_repId;
 
     const stu_batch_rep = await Stu_batch_rep.findById(stu_batch_rep_id)

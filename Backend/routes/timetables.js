@@ -72,7 +72,7 @@ router.route("/delete/:timetableId").delete(async(req,res) => {
 })
 
 //one timetable details view
-router.route("/get/:timetableId").get(async(req, res)=> {
+router.route("/get/:timetableId").post(async(req, res)=> {
     let timetable_id = req.params.timetableId;
     const timetable = await Timetable.findById(timetable_id)
     .then((timetable) => {

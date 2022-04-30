@@ -38,14 +38,14 @@ router.route("/view").get((req, res)=>{
 //update batches
 router.route("/update/:batchId").put(async(req, res)=>{
     let batch_id = req.params.batchId;
-    const { year, department_id, hod_id, rep_id } = req.body; 
+    const { year, department, hod, rep } = req.body; 
 
     const updateBatch = {
         year, 
-        department_id,
+        department,
         // course_id, 
-        hod_id, 
-        rep_id,
+        hod, 
+        rep,
     }
 
     //await - keep next task wait until came promise on previous success 
@@ -71,7 +71,7 @@ router.route("/delete/:id").delete(async(req,res) => {
 })
 
 //one batch details view
-router.route("/get/:batchId").get(async(req, res)=> {
+router.route("/get/:batchId").post(async(req, res)=> {
     let batch_id = req.params.batchId;
     // await Notice.findOne(title)
     const batch = await Batch.findById(batch_id)

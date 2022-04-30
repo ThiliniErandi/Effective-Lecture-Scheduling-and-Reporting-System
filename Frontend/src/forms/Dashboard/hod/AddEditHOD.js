@@ -40,8 +40,9 @@ const AddEditHOD = () => {
             }else {
                 const response = await axios
                 .put(`http://localhost:8070/hods/update/${id}`, formValue);
-                if(response.status === 201 ) {
+                if(response.status === 200 ) {
                     toast.success("Head of the Department updated successfully");
+                    history.push('/hods');
                 }else{
                     toast.error("Something went wrong");
                 }
@@ -75,9 +76,9 @@ const AddEditHOD = () => {
     }, [id]);
 
     const getSingleHOD = async (id) => {
-        const singleHOD = await axios.get(`http://localhost:8070/users/${id}`)
+        const singleHOD = await axios.post(`http://localhost:8070/hods/get/${id}`)
         if(singleHOD.status === 200) {
-            setFormValue({ ...singleHOD.data});
+            setFormValue({ ...singleHOD.data.hod});
         }else {
             toast.error("Something went wrong");
         }
@@ -219,12 +220,12 @@ const AddEditHOD = () => {
 
                 <MDBBtn className='formBtn'
                     type='submit'
-                    style={{ marginLeft: '50px', paddingInline: '40px', fontSize: '15PX', marginTop: '30px', marginRight:'20px'}}
+                    style={{ marginLeft: '50px', paddingInline: '30px', fontSize: '15PX', marginTop: '30px', marginRight:'20px'}}
                 >{ editMode ? "Update" : "Add"}
                 </MDBBtn>
                 <Link to='/HODs'>
                     <MDBBtn color='dark'
-                        style={{ paddingInline: '40px', fontSize: '15PX', marginTop: '20px' }}
+                        style={{ paddingInline: '30px', fontSize: '15PX', marginTop: '20px' }}
                         >Go Back
                     </MDBBtn>
                 </Link>
