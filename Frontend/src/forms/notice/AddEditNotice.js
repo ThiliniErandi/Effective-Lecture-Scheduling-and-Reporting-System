@@ -51,21 +51,20 @@ const AddEditNotice = () => {
                     toast.error("Something went wrong");
                 }
             } 
-            // else {
-            //     const response = await axios
-            //     .put(`http://localhost:8070/notices/update/${id}`, formValue);
-            //     if(response.status === 200 ) {
-            //         toast.success("Notice updated successfully");
-            //     }else{
-            //         toast.error("Something went wrong");
-            //     }
-            // }
+            else {
+                const response = await axios
+                .put(`http://localhost:8070/notices/update/${id}`, formValue);
+                if(response.status === 200 ) {
+                    toast.success("Notice updated successfully");
+                    history.push('/home');
+                }else{
+                    toast.error("Something went wrong");
+                }
+            }
             setFormValue({ title: "", description: "", file: ""});
         }
     };
 
-      // 
-    //
     // formData.append("upload_preset", "")
     // axios
     //     .post("http://localhost:8070/notices/upload", formData)
@@ -78,22 +77,23 @@ const AddEditNotice = () => {
     //         toast.error("Something went wrong");
     //     });
 
-    const {_id} = useParams();
+    const {id} = useParams();
 
     useEffect(() => {
-        if(_id) {
+        if(id) {
             setEditMode(true);
-            getSingleNotice(_id);
+            getSingleNotice(id);
         }else {
             setEditMode(false);
             setFormValue({ ...initialState});
         }
-    }, [_id]);
+    }, [id]);
 
-    const getSingleNotice = async (_id) => {
-        const singleNotice = await axios.get(`http://localhost:8070/notices/get/${_id}`);
+    const getSingleNotice = async (id) => {
+        const singleNotice = await axios.post(`http://localhost:8070/notices/get/${id}`);
         if(singleNotice.status === 200) {
-            setFormValue({ ...singleNotice.data});
+            setFormValue({ ...singleNotice.data.notice});
+            console.log(singleNotice);
         }else {
             toast.error("Something went wrong");
         }

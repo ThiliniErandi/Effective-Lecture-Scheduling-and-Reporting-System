@@ -61,7 +61,7 @@ router.route("/delete/:courseId").delete(async(req,res) => {
 })
 
 //one course details view
-router.route("/get/:courseId").get(async(req, res)=> {
+router.route("/get/:courseId").post(async(req, res)=> {
     let course_id = req.params.courseId;
     // await Course.findOne(title)
     const course = await Course.findById(course_id)

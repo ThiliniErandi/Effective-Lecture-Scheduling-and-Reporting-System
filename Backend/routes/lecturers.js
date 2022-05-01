@@ -72,7 +72,7 @@ router.route("/delete/:lecturerId").delete(async(req,res) => {
 })
 
 //one lecturer details view
-router.route("/get/:lecturerId").get(async(req, res)=> {
+router.route("/get/:lecturerId").post(async(req, res)=> {
     let lecturer_id = req.params.lecturerId;
     // await Lecturer.findOne(title)
     const lecturer = await Lecturer.findById(lecturer_id)

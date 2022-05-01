@@ -46,7 +46,6 @@ const Users = () => {
         }
     }, [cookies, removeCookie]);
 
-
     return (
         <div className='dashboard'>
             <Navbar />

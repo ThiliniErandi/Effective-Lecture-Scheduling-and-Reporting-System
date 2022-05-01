@@ -65,7 +65,7 @@ router.route("/delete/:reportId").delete(async(req,res) => {
 })
 
 //one report details view
-router.route("/get/:reportId").get(async(req, res)=> {
+router.route("/get/:reportId").post(async(req, res)=> {
     let report_id = req.params.reportId;
     const report = await Report.findById(report_id)
     .then((report) => {

@@ -7,7 +7,6 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from "axios";
 import { toast } from 'react-toastify';
 
-
 const User = ({ user_name, password, user_type, email, _id }) => {
   const history = useHistory();
   const HandleDelete = async () => {
@@ -55,7 +54,6 @@ const User = ({ user_name, password, user_type, email, _id }) => {
     </tr>
 
   </>
-    ;
 };
 
 

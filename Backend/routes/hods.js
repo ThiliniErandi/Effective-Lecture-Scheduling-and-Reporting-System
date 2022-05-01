@@ -73,7 +73,7 @@ router.route("/delete/:hodId").delete(async(req,res) => {
 })
 
 //one HOD details view
-router.route("/get/:hodId").get(async(req, res)=> {
+router.route("/get/:hodId").post(async(req, res)=> {
     let hod_id = req.params.hodId;
     // await hod.findOne(title)
     const hod = await HOD.findById(hod_id)

@@ -73,7 +73,7 @@ router.route("/delete/:scheduleId").delete(async(req,res) => {
 })
 
 //one schedule details view
-router.route("/get/:scheduleId").get(async(req, res)=> {
+router.route("/get/:scheduleId").post(async(req, res)=> {
     let schedule_id = req.params.scheduleId;
     const schedule = await schedule.findById(schedule_id)
     .then((schedule) => {

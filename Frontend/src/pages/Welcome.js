@@ -12,8 +12,8 @@ const Welcome = () => {
             </div>
             <div className="hero-text">
                 <div className="hero-brand">
-                    <h1>Effective Lecture Scheduling </h1>
-                    <h1>& Reporting System</h1>
+                    <h1 >Effective Lecture Scheduling </h1>
+                    <h1 className='welcome-text'>& Reporting System</h1>
                 </div>
                 <div className="hero-welcome">
                     <h2>WELCOME</h2>

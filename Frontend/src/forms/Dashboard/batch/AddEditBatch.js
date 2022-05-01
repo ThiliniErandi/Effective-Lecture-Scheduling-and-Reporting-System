@@ -44,8 +44,10 @@ const AddEditBatch = () => {
             }else {
                 const response = await axios
                 .put(`http://localhost:8070/batches/update/${id}`, formValue);
+                console.log(response);
                 if(response.status === 200 ) {
                     toast.success("Batch updated successfully");
+                    history.push('/batches');
                 }else{
                     toast.error("Something went wrong");
                 }
@@ -88,9 +90,10 @@ const AddEditBatch = () => {
     }, [id]);
 
     const getSingleBatch = async (id) => {
-        const singleBatch = await axios.get(`http://localhost:8070/batches/${id}`)
+        const singleBatch = await axios.post(`http://localhost:8070/batches/get/${id}`);
+           console.log(singleBatch);
         if(singleBatch.status === 200) {
-            setFormValue({ ...singleBatch.data});
+            setFormValue({ ...singleBatch.data.batch});
         }else {
             toast.error("Something went wrong");
         }
@@ -200,12 +203,12 @@ const AddEditBatch = () => {
 
                 <MDBBtn className='formBtn'
                     type='submit'
-                    style={{ marginLeft: '50px', paddingInline: '40px', fontSize: '15PX', marginTop: '30px', marginRight:'20px'}}
+                    style={{ marginLeft: '50px', paddingInline: '30px', fontSize: '15PX', marginTop: '30px', marginRight:'20px'}}
                 >{ editMode ? "Update" : "Add"}
                 </MDBBtn>
                 <Link to='/batches'>
                     <MDBBtn color='dark'
-                        style={{ paddingInline: '40px', fontSize: '15PX', marginTop: '20px' }}
+                        style={{ paddingInline: '30px', fontSize: '15PX', marginTop: '20px' }}
                         >Go Back
                     </MDBBtn>
                 </Link>

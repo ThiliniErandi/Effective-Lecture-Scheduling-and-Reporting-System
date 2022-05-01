@@ -16,7 +16,7 @@ const batch = ({ year, department, hod, rep, handleDelete, _id }) => {
           <td>{ hod }</td>
           <td>{ rep }</td>
           <td>
-            <Link to = { `/addEditBatch` }> 
+            <Link to = { `/addEditBatch/${_id}` }> 
                 <MDBIcon
                     fas
                     icon = 'edit'

@@ -84,7 +84,7 @@ router.route("/delete/:noticeId").delete(async(req,res) => {
 })
 
 //one notice details view
-router.route("/get/:noticeId").get(async(req, res)=> {
+router.route("/get/:noticeId").post(async(req, res)=> {
     let notice_id = req.params.noticeId;
     const notice = await Notice.findById(notice_id)
     .then((notice) => {

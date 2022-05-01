@@ -45,12 +45,12 @@ const Batches = () => {
 
     const handleDelete = async(id) => {
         if (window.confirm("Are you sure that you wanted to delete this batch?")) {
-            const response = await axios.delete(`http://localhost:8070/batches/${id}`);
+            const response = await axios.delete(`http://localhost:8070/batches/delete/${id}`);
             console.log('deleted');
             if (response.status === 200) {
                 toast.success("Batch deleted successfully");
                 console.log('deleted');
-                loadingData();
+                // loadingData();
             } else {
                 toast.error("Something went wrong");
             }
