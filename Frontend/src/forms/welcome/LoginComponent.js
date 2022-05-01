@@ -18,8 +18,8 @@ const Login = () => {
     },
 
     validationSchema: Yup.object({
-      email: Yup.string('Invalid Username').required().email(),
-      password: Yup.string('Does not match with the username').required(),
+      email: Yup.string('Invalid email').required().email(),
+      password: Yup.string('Does not match with the email').required(),
       // rememberPassword: Yup.boolean().test()
     }),
 
@@ -56,7 +56,7 @@ const Login = () => {
 
         <MDBInput
           label='Email'
-          id="username"
+          id="email"
           name="email"
           type="text"
           style={{ marginBottom: '10px' }}
@@ -66,7 +66,7 @@ const Login = () => {
         />
 
         {formik.touched.email && formik.errors.email ? (
-          <div className='input-feedback !mportant'>{formik.errors.username}</div>
+          <div className='input-feedback !mportant'>{formik.errors.email}</div>
         ) : null}
 
         <MDBInput
